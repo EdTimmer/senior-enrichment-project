@@ -6,7 +6,8 @@ const Campuses = ({campuses})=> {
   return (
     <div>
       <h2>All Campuses</h2>
-      <Link to={'/campuses/create'}>Create Campus</Link>
+      <p>Number of Campuses: {campuses.length}</p>
+      <Link to={'/campuses/create'}>Add Campus</Link>
       <ul>
         {
           campuses.map(campus => {

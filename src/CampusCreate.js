@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { saveCampus } from './store';
 
 class CampusCreate extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       name: ''
     }
@@ -16,9 +16,7 @@ class CampusCreate extends Component {
   }
   onSave(ev) {
     ev.preventDefault();
-    console.log(this.state.name);
     const campus = { name: this.state.name };
-    console.log('campus is:', campus);
     this.props.saveCampus(campus);
   }
   render() {
@@ -26,21 +24,15 @@ class CampusCreate extends Component {
     const { onChangeName, onSave } = this;
     return (
       <div>
-        <h3>Create A New Campus</h3>
+        <h3>Add A New Campus</h3>
         <form onSubmit={ onSave }>
           <input value={ name } onChange={ onChangeName }/>
-          <button disabled={name.length === 0}>Create Campus</button>
+          <button disabled={name.length === 0}>Add Campus</button>
         </form>
       </div>
     )
   }
 }
-
-const mapStateToProps = ({ campuses })=> {
-  return {
-    campuses
-  }
-};
 
 const mapDispatchToProps = (dispatch, {history})=> {
   return {
@@ -48,4 +40,4 @@ const mapDispatchToProps = (dispatch, {history})=> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CampusCreate);
+export default connect(null, mapDispatchToProps)(CampusCreate);

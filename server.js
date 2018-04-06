@@ -26,17 +26,23 @@ app.get('/api/students', (req, res, next)=> {
     .catch(next);
 });
 
-app.post('/api/campuses/:id/students', (req, res, next)=> {
-  Student.create({ campusId: req.params.id })
-    .then( student => res.send(student))
-    .catch(next);
-});
+// app.post('/api/campuses/:id/students', (req, res, next)=> {
+//   Student.create({ campusId: req.params.id })
+//     .then( student => res.send(student))
+//     .catch(next);
+// });
 
 app.post('/api/campuses/create', (req, res, next)=> {
   Campus.create(req.body)
     .then( campus => res.send(campus))
     .catch(next);
-})
+});
+
+app.post('/api/students/create', (req, res, next)=> {
+  Student.create(req.body)
+    .then( student => res.send(student))
+    .catch(next);
+});
 
 app.use((err, req, res, next)=> {
   res.status(500).send(err);

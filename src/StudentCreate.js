@@ -24,11 +24,20 @@ class StudentCreate extends Component {
     const { onChangeName, onSave } = this;
     return (
       <div>
+        <h3>Add A New Student</h3>
         <form onSubmit={ onSave }>
           <input value={ name } onChange={ onChangeName }/>
-          <button disabled={name.length === 0}>Create Student</button>
+          <button disabled={name.length === 0}>Add Student</button>
         </form>
       </div>
     )
   }
 }
+
+const mapDispatchToProps = (dispatch, {history})=> {
+  return {
+    saveStudent: (student)=> dispatch(saveStudent(student, history))    
+  }
+}
+
+export default connect(null, mapDispatchToProps)(StudentCreate);

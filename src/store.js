@@ -92,9 +92,9 @@ const saveCampus = (campus, history)=> {
   }
 }
 
-const saveStudent = (student)=> {
+const saveStudent = (student, history)=> {
   return (dispatch)=> {
-    axios.post('/api/campuses/:id/students', student)
+    axios.post('/api/students/create', student)
       .then( result => result.data)
       .then( student => dispatch({
         type: CREATE_STUDENT,
@@ -102,7 +102,7 @@ const saveStudent = (student)=> {
         })
       )
     .then( ()=> {
-      history.push('/campuses/:id');
+      history.push('/students');
     })
   }
 }

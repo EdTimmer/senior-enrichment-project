@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { saveStudent } from './store';
 
-const Students = ({ students, addStudent })=> {
+const Students = ({students})=> {
   return (
     <div>
       <h2>All Students</h2>
+      <p>Number of Students: {students.length}</p>
+      <Link to={'/students/create'}>Add Student</Link>
       <ul>
         {
           students.map(student => {
@@ -19,7 +20,7 @@ const Students = ({ students, addStudent })=> {
         }
       </ul>
     </div>
-  )
+  )  
 }
 
 const mapStateToProps = ({ students })=> {
@@ -28,12 +29,4 @@ const mapStateToProps = ({ students })=> {
   }
 };
 
-const mapDispatchToProps = (dispatch)=> {
-  return {
-    addStudent: ()=> {
-      return dispatch(saveStudent(student, history))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Students);
+export default connect(mapStateToProps)(Students);

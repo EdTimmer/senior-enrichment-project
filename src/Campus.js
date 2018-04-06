@@ -19,6 +19,7 @@ class Campus extends Component {
       <div>
         <h2>Campus</h2>
         <h3>{ campus.name }</h3>
+        <p>Number of Students in this Campus: {studentsOfThisCampus.length}</p>
         <ul>          
             {
               studentsOfThisCampus.map(student => {
