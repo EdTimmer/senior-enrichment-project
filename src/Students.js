@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Students = ({students})=> {
+const Students = ({students, campuses})=> {
   return (
     <div>
       <h2>All Students</h2>
@@ -11,21 +11,27 @@ const Students = ({students})=> {
       <ul>
         {
           students.map(student => {
+            console.log(campuses)
             return (
               <li key={student.id}>
                 <Link to={`/students/${student.id}`}>{student.name}</Link>
-              </li>
+        
+ 
+              </li>  
+         
             )
           })
+          
         }
       </ul>
     </div>
   )  
 }
 
-const mapStateToProps = ({ students })=> {
+const mapStateToProps = ({ students, campuses })=> {
   return {
-    students
+    students,
+    campuses
   }
 };
 

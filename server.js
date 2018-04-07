@@ -26,12 +26,6 @@ app.get('/api/students', (req, res, next)=> {
     .catch(next);
 });
 
-// app.post('/api/campuses/:id/students', (req, res, next)=> {
-//   Student.create({ campusId: req.params.id })
-//     .then( student => res.send(student))
-//     .catch(next);
-// });
-
 app.post('/api/campuses/create', (req, res, next)=> {
   Campus.create(req.body)
     .then( campus => res.send(campus))
@@ -42,6 +36,44 @@ app.post('/api/students/create', (req, res, next)=> {
   Student.create(req.body)
     .then( student => res.send(student))
     .catch(next);
+});
+
+app.delete('/api/campuses/:id', (req, res, next)=> {
+  Campus.findById(req.params.id)
+    .then( campus => {
+      campus.destroy();  //no need for return here
+    })
+    .then( ()=> res.sendStatus(204))
+    .catch(next)
+});
+
+app.delete('/api/students/:id', (req, res, next)=> {
+  Student.findById(req.params.id)
+    .then( student => {
+      student.destroy();  //no need for return here
+    })
+    .then( ()=> res.sendStatus(204))
+    .catch(next)
+});
+
+app.put('/api/students/:id', (req, res, next)=> {
+  Student.findById(req.params.id)
+    .then( student => {
+      Object.assign(student, req.body);
+      return student.save();
+    })
+    .then( student => res.send(student))
+    .catch(next)
+});
+
+app.put('/api/campuses/:id', (req, res, next)=> {
+  Campus.findById(req.params.id)
+    .then( campus => {
+      Object.assign(campus, req.body);
+      return campus.save();
+    })
+    .then( campus => res.send(campus))
+    .catch(next)
 });
 
 app.use((err, req, res, next)=> {

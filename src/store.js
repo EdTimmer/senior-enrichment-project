@@ -38,11 +38,11 @@ const studentsReducer = (state = [], action)=> {
     case CREATE_STUDENT:
       state = [...state, action.student];
       break;
+    // case DELETE_CAMPUS:
+    //   state = state.filter( student => student.campusId !== action.campus.id);  //need to review
     case DELETE_STUDENT:
       state = state.filter( student => student.id !== action.student.id);
       break;
-    case DELETE_CAMPUS:
-      state = state.filter( student => student.campusId !== action.campus.id);  //need to review
     case UPDATE_STUDENT:
       state = state.map( student => student.id === action.student.id ? action.student : student);
       break;
@@ -78,6 +78,20 @@ const loadStudents = ()=> {
 }
 
 const saveCampus = (campus, history)=> {
+  if(campus.id) {
+    return (dispatch)=> {
+      return axios.put(`/api/campuses/${campus.id}`, campus)
+        .then( result => result.data)
+        .then( campus => dispatch({
+          type: UPDATE_CAMPUS,
+          campus
+        })
+      )
+      .then(()=> {
+        history.push('/campuses');
+      })
+    }
+  }
   return (dispatch)=> {
     axios.post('/api/campuses/create', campus)
       .then( result => result.data)
@@ -86,13 +100,28 @@ const saveCampus = (campus, history)=> {
         campus
         })
       )
+    .then(()=> console.log('campus is: ', campus))
     .then( ()=> {
-      history.push('/campuses');
+      history.push(`/campuses`);  //has to redirect to that campus view
     })
   }
 }
 
 const saveStudent = (student, history)=> {
+  if(student.id) {
+    return (dispatch)=> {
+      return axios.put(`/api/students/${student.id}`, student)
+        .then( result => result.data)
+        .then( student => dispatch({
+          type: UPDATE_STUDENT,
+          student
+        })
+      )
+      .then(()=> {
+        history.push('/students');
+      })
+    }
+  }
   return (dispatch)=> {
     axios.post('/api/students/create', student)
       .then( result => result.data)
@@ -102,12 +131,72 @@ const saveStudent = (student, history)=> {
         })
       )
     .then( ()=> {
+      history.push('/students');  //has to redirect to that student view
+    })
+  }
+}
+
+const deleteCampus = (campus, history)=> {
+  return (dispatch)=> {
+    return axios.delete(`api/campuses/${campus.id}`)
+      .then( ()=> dispatch({
+        type: DELETE_CAMPUS,
+        campus
+      })
+    )
+    .then( ()=> {
+      history.push('/campuses');
+    })
+  }
+}
+
+const deleteStudent = (student, history)=> {
+  return (dispatch)=> {
+    return axios.delete(`api/students/${student.id}`)
+      .then( ()=> dispatch({
+        type: DELETE_STUDENT,
+        student
+      })
+    )
+    .then( ()=> {
       history.push('/students');
     })
   }
 }
 
+const selectCampus = (campus, history)=> {
+  // if(campus.id) {
+    return (dispatch)=> {
+      return axios.put(`/api/campuses/${campus.id}`, campus)
+        .then( result => result.data)
+        .then( campus => dispatch({
+          type: UPDATE_CAMPUS,
+          campus
+        })
+      )
+      .then(()=> {
+        history.push('/campuses');
+      })
+    }
+  // }
+  // return (dispatch)=> {
+  //   axios.post('/api/campuses/create', campus)
+  //     .then( result => result.data)
+  //     .then( campus => dispatch({
+  //       type: CREATE_CAMPUS,
+  //       campus
+  //       })
+  //     )
+  //   .then(()=> console.log('campus is: ', campus))
+  //   .then( ()=> {
+  //     history.push(`/campuses`);  //has to redirect to that campus view
+  //   })
+  // }
+}
+
+
+
 const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;
-export { loadCampuses, loadStudents, saveCampus, saveStudent };
+export { loadCampuses, loadStudents, saveCampus, saveStudent, deleteCampus, deleteStudent, selectCampus };
