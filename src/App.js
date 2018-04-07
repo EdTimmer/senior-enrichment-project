@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadCampuses, loadStudents, saveCampus, saveStudent, deleteCampus, deleteStudent, selectCampus } from './store';
+import { loadCampuses, loadStudents, saveCampus, saveStudent, deleteCampus, deleteStudent } from './store';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './Nav';

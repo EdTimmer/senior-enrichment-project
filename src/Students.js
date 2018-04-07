@@ -3,18 +3,44 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Students = ({students, campuses})=> {
+
   return (
     <div>
       <h2>All Students</h2>
-      <p>Number of Students: {students.length}</p>
+      <p><i>Number of all students:</i> <strong>{students.length}</strong></p>
       <Link to={'/students/create'}>Add Student</Link>
       <ul>
         {
           students.map(student => {
-            // console.log(campuses)
+            const campus = campuses.find(campus=> campus.id === student.campusId);
+          //   // console.log(campuses)
+          //   if (student.campusId) {
+          //     const campus = campuses.find(campus=> campus.id === student.campusId);
+          //     console.log('campus is', campus);
+          //   }
+          //   else {
+          //     const campus = {name: 'no campus yet'}
+          //     console.log('campus is', campus);
+              
+          //   }
+            
+            // if(!campus) {
+            //   return null;
+            // }
+           
+
             return (
               <li key={student.id}>
                 <Link to={`/students/${student.id}`}>{student.name}</Link>
+                <br />
+                
+                
+                 {/* {campus.name} */}
+                
+                {/*<Link to={`/campuses/${campus.id}`}>
+                {campus.name}
+            </Link>
+            <br />*/}
         
  
               </li>  

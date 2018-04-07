@@ -1,6 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import axios from 'axios';
+import loggerMiddleware from 'redux-logger';
+
+
 
 const SET_CAMPUSES = 'SET_CAMPUSES';
 const CREATE_CAMPUS = 'CREATE_CAMPUS';
@@ -38,8 +41,6 @@ const studentsReducer = (state = [], action)=> {
     case CREATE_STUDENT:
       state = [...state, action.student];
       break;
-    // case DELETE_CAMPUS:
-    //   state = state.filter( student => student.campusId !== action.campus.id);  //need to review
     case DELETE_STUDENT:
       state = state.filter( student => student.id !== action.student.id);
       break;
@@ -88,7 +89,7 @@ const saveCampus = (campus, history)=> {
         })
       )
       .then(()=> {
-        history.push('/campuses');
+        history.push(`/campuses/${campus.id}`);
       })
     }
   }
@@ -101,6 +102,7 @@ const saveCampus = (campus, history)=> {
         })
       )
     // .then(()=> console.log('campus is: ', campus))
+    // .then(()=> loadCampuses())
     .then( ()=> {
       history.push(`/campuses`);  //has to redirect to that campus view
     })
@@ -117,9 +119,9 @@ const saveStudent = (student, history)=> {
           student
         })
       )
-      .then(()=> {
-        history.push('/students');
-      })
+      // .then(()=> {
+      //   history.push(`/students/${student.id}`);
+      // })
     }
   }
   return (dispatch)=> {
@@ -164,40 +166,26 @@ const deleteStudent = (student, history)=> {
   }
 }
 
-const selectCampus = (campus, history)=> {
-  // if(campus.id) {
-    return (dispatch)=> {
-      return axios.put(`/api/campuses/${campus.id}`, campus)
-        .then( result => result.data)
-        .then( campus => dispatch({
-          type: UPDATE_CAMPUS,
-          campus
-        })
-      )
-      .then(()=>console.log('campus in the store is:', campus))
-      .then(()=> {
-        history.push('/campuses');
+const enrollStudent = (student, history)=> {
+  return (dispatch)=> {
+    return axios.put(`/api/students/${student.id}`, student)
+      .then( result => result.data)
+      .then( student => dispatch({
+        type: UPDATE_STUDENT,
+        student
       })
-    }
-  // }
-  // return (dispatch)=> {
-  //   axios.post('/api/campuses/create', campus)
-  //     .then( result => result.data)
-  //     .then( campus => dispatch({
-  //       type: CREATE_CAMPUS,
-  //       campus
-  //       })
-  //     )
-  //   .then(()=> console.log('campus is: ', campus))
-  //   .then( ()=> {
-  //     history.push(`/campuses`);  //has to redirect to that campus view
-  //   })
-  // }
+    )
+    .then(()=>console.log('student in the store is:', student))
+    .then(()=> {
+      history.push('/students');
+    })
+  }
 }
 
 
 
-const store = createStore(reducer, applyMiddleware(thunk));
+
+const store = createStore(reducer, applyMiddleware(thunk, loggerMiddleware));
 
 export default store;
-export { loadCampuses, loadStudents, saveCampus, saveStudent, deleteCampus, deleteStudent, selectCampus };
+export { loadCampuses, loadStudents, saveCampus, saveStudent, deleteCampus, deleteStudent };

@@ -6,7 +6,7 @@ const Campuses = ({campuses})=> {
   return (
     <div>
       <h2>All Campuses</h2>
-      <p>Number of Campuses: {campuses.length}</p>
+      <p><i>Number of Campuses:</i> <strong>{campuses.length}</strong></p>
       <Link to={'/campuses/create'}>Add Campus</Link>
       <ul>
         {
