@@ -100,7 +100,7 @@ const saveCampus = (campus, history)=> {
         campus
         })
       )
-    .then(()=> console.log('campus is: ', campus))
+    // .then(()=> console.log('campus is: ', campus))
     .then( ()=> {
       history.push(`/campuses`);  //has to redirect to that campus view
     })
@@ -174,6 +174,7 @@ const selectCampus = (campus, history)=> {
           campus
         })
       )
+      .then(()=>console.log('campus in the store is:', campus))
       .then(()=> {
         history.push('/campuses');
       })

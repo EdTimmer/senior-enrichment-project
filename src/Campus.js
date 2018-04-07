@@ -61,7 +61,7 @@ class Campus extends Component {
 const mapStateToProps = ({ campuses, students }, { id })=> {
   const campus = campuses.find( campus => campus.id === id );
   const studentsOfThisCampus = students.filter( student => student.campusId === id)
-  console.log('studentsOfThisCampus is:', studentsOfThisCampus);
+  // console.log('studentsOfThisCampus is:', studentsOfThisCampus);
   return {
     campus,
     studentsOfThisCampus

@@ -29,7 +29,7 @@ class Student extends Component {
   onSelectCampus(ev) {
     ev.preventDefault();
     const campus = this.props.campuses.find( campus => campus.id === this.state.id*1 );
-    this.props.selectCampus(campus);
+    this.props.selectCampus(campus);  //THIS SHOULD BE AN UPDATE OF THE STUDENT, NOT OF THE CAMPUS
   }
   onChange(ev){
     this.setState({ id: ev.target.value });
@@ -82,6 +82,7 @@ const mapStateToProps = ({ students, campuses }, { id })=> {
 };
 
 const mapDispatchToProps = (dispatch, {history})=> {
+  // console.log('campus is:', campus);
   return {
     selectCampus: (campus)=> dispatch(selectCampus(campus, history)),
     saveStudent: (student)=> dispatch(saveStudent(student, history)),
