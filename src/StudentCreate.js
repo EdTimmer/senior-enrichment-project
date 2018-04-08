@@ -6,28 +6,34 @@ class StudentCreate extends Component {
   constructor() {
     super();
     this.state = {
-      name: ''
+      firstName: '',
+      lastName: '',
+      GPA: 0,
+      email: ''
     }
-    this.onChangeName = this.onChangeName.bind(this);
+    this.onChangeInfo = this.onChangeInfo.bind(this);
     this.onSave = this.onSave.bind(this);
   }
-  onChangeName(ev) {
-    this.setState({ name: ev.target.value })
+  onChangeInfo(ev) {
+    this.setState({ [ev.target.name]: ev.target.value })
   }
   onSave(ev) {
     ev.preventDefault();
-    const student = { name: this.state.name };
+    const student = { firstName: this.state.firstName, lastName: this.state.lastName, GPA: this.state.GPA, email: this.state.email };
     this.props.saveStudent(student);
   }
   render() {
-    const { name } = this.state;
-    const { onChangeName, onSave } = this;
+    const { firstName, lastName, GPA, email } = this.state;
+    const { onChangeInfo, onSave } = this;
     return (
       <div>
         <h3>Add A New Student</h3>
         <form onSubmit={ onSave }>
-          <input value={ name } onChange={ onChangeName }/>
-          <button disabled={name.length === 0}>Add Student</button>
+          <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeInfo }/></p>
+          <p>Last Name: <input value={ lastName } name='lastName' onChange={ onChangeInfo }/></p> 
+          <p>GPA: <input value={ GPA } name='GPA' onChange={ onChangeInfo }/></p>
+          <p>Email: <input value={ email } name='email' onChange={ onChangeInfo }/></p>
+          <button disabled={firstName.length === 0 && lastName.length === 0 && email.length === 0}>Add Student</button>
         </form>
       </div>
     )

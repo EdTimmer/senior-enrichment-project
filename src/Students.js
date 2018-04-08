@@ -14,7 +14,7 @@ const Students = ({students, campuses})=> {
           {
             students.map(student => {
               const campus = campuses.find(campus=> campus.id === student.campusId);
-              console.log('campus is:', campus)
+              // console.log('campus is:', campus)
               const campusName = campus ? <Link to={`/campuses/${campus.id}`}>{campus.name}
           </Link> : 'none'
     
