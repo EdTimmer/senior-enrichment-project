@@ -3,8 +3,6 @@ import thunk from 'redux-thunk';
 import axios from 'axios';
 import loggerMiddleware from 'redux-logger';
 
-
-
 const SET_CAMPUSES = 'SET_CAMPUSES';
 const CREATE_CAMPUS = 'CREATE_CAMPUS';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
@@ -79,6 +77,7 @@ const loadStudents = ()=> {
 }
 
 const saveCampus = (campus, history)=> {
+  let _campus;
   if(campus.id) {
     return (dispatch)=> {
       return axios.put(`/api/campuses/${campus.id}`, campus)
@@ -96,22 +95,22 @@ const saveCampus = (campus, history)=> {
   return (dispatch)=> {
     axios.post('/api/campuses/create', campus)
       .then( result => result.data)
-      .then( campus => dispatch({
-        type: CREATE_CAMPUS,
-        campus
+      .then( campus => {
+        _campus = campus;
+        dispatch({
+          type: CREATE_CAMPUS,
+          campus
         })
-      )
-    // .then(()=> console.log('campus is: ', campus))
-    // .then(()=> loadCampuses())
+      })
     .then( ()=> {
-      history.push(`/campuses`);  //has to redirect to that campus view
+      history.push(`/campuses/${_campus.id}`);  
     })
   }
 }
 
 const saveStudent = (student, history)=> {
+  let _student;
   if(student.id) {
-    console.log('student in the store is:', student)
     return (dispatch)=> {
       return axios.put(`/api/students/${student.id}`, student)
         .then( result => result.data)
@@ -120,21 +119,20 @@ const saveStudent = (student, history)=> {
           student
         })
       )
-      // .then(()=> {
-      //   history.push(`/students/${student.id}`);
-      // })
     }
   }
   return (dispatch)=> {
     axios.post('/api/students/create', student)
       .then( result => result.data)
-      .then( student => dispatch({
-        type: CREATE_STUDENT,
-        student
+      .then( student => {
+        _student = student;
+        dispatch({
+          type: CREATE_STUDENT,
+          student
         })
-      )
+      })
     .then( ()=> {
-      history.push('/students');  //has to redirect to that student view
+      history.push(`/students/${_student.id}`);  
     })
   }
 }
@@ -166,25 +164,6 @@ const deleteStudent = (student, history)=> {
     })
   }
 }
-
-// const enrollStudent = (student, history)=> {
-//   return (dispatch)=> {
-//     return axios.put(`/api/students/${student.id}`, student)
-//       .then( result => result.data)
-//       .then( student => dispatch({
-//         type: UPDATE_STUDENT,
-//         student
-//       })
-//     )
-//     .then(()=>console.log('student in the store is:', student))
-//     .then(()=> {
-//       history.push('/students');
-//     })
-//   }
-// }
-
-
-
 
 const store = createStore(reducer, applyMiddleware(thunk, loggerMiddleware));
 

@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteStudent, saveStudent } from './store';
 
-
 class Student extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: this.props.student ? this.props.student.name : '',
       campusId: -1
-      // id: this.props.student ? this.props.student.id : '',
-      // campusId: this.props.student.campusId
     };
     this.onSave = this.onSave.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
@@ -45,14 +42,12 @@ class Student extends Component {
     if (!student) {
       return null;
     }
-    const campusOfThisStudent = campuses.find(campus=> campus.id === student.campusId);
-    
-    const nameOfCampus = !!campusOfThisStudent ? `${student.name} is enrolled in ${campusOfThisStudent.name}` : `${student.name} is not yet enrolled in any campus`;
-    
-    // console.log('props are: ', this.props);
+    const campusOfThisStudent = campuses.find(campus=> campus.id === student.campusId);    
+    const nameOfCampus = !!campusOfThisStudent ? `${student.name} is enrolled in ${campusOfThisStudent.name}` : `${student.name} is not yet enrolled in any campus`;    
+    const availableCampuses = campuses.filter(campus => campus.id !== student.campusId);
+
     return (
       <div>
-
         <h2>Student</h2>
         <h3>{ student.name }</h3>
         <p><i>{nameOfCampus}</i></p>
@@ -68,7 +63,7 @@ class Student extends Component {
           <select value={ campusId } onChange={ onChange }>
           <option value='-1'>Select Campus</option>     
           {
-            campuses.map( campus => {
+            availableCampuses.map( campus => {
               return (
                 <option key={ campus.id } value={ campus.id }>
                   { campus.name }
@@ -80,34 +75,25 @@ class Student extends Component {
           <button disabled={ campusId*1 === -1}>
           Assign
           </button>
-        </form>
-       
-          
+        </form>          
       </div>
     )
   }
-}
+};
 
 const mapStateToProps = ({ students, campuses }, { id })=> {
-  
   const student = students.find( student => student.id === id );
-  // console.log('student is:', student);
-  // const campusOfThisStudent = (student)=> campuses.find(campus => campus.id === student.campusId);
-  // console.log('student is:', student);
   return {
     student,
     campuses
-    // campusOfThisStudent(student)
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch, {history})=> {
-  // console.log('campus is:', campus);
   return {
-    // enrollStudent: (student)=> dispatch(enrollStudent(student, history)),
     saveStudent: (student)=> dispatch(saveStudent(student, history)),
     deleteStudent: (student)=> dispatch(deleteStudent(student, history))
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Student);
