@@ -10,21 +10,22 @@ class Campus extends Component {
     super(props);
     this.state = {
       name: this.props.campus ? this.props.campus.name : '',
-      // student: {id: null, name: '', campusId: null}
+      image: this.props.campus ? this.props.campus.image : '',
+      description: this.props.campus ? this.props.campus.description : ''
     }
     this.onSave = this.onSave.bind(this);
-    this.onChangeName = this.onChangeName.bind(this);
+    this.onChangeInfo = this.onChangeInfo.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onSelectStudent = this.onSelectStudent.bind(this);
     this.onChange = this.onChange.bind(this);
   }
   onSave(ev) {
     ev.preventDefault();
-    const campus = { id: this.props.id, name: this.state.name};
+    const campus = { id: this.props.id, name: this.state.name, image: this.state.image, description: this.state.description };
     this.props.saveCampus(campus);
   }
-  onChangeName(ev) {
-    this.setState({ name: ev.target.value })
+  onChangeInfo(ev) {
+    this.setState({ [ev.target.name]: ev.target.value })
   }
   onDelete() {
     this.props.deleteCampus({ id: this.props.id });
@@ -32,11 +33,6 @@ class Campus extends Component {
   onSelectStudent(ev) {
     ev.preventDefault();
     const student = this.props.students.find( student => student.id === this.state.student.id*1 );
-    // const student = {id: this.props.id, name: this.state.name, campusId: this.state.campusId}
-    console.log('student is:', student);
-    // this.state.student.campusId = this.props.id;
-    
-    // student.campusId = this.state.campusId
     this.props.saveStudent(student);  
   }
   onChange(ev){
@@ -44,8 +40,8 @@ class Campus extends Component {
   }
   render() {
     const { campus, students, id } = this.props;
-    const { name } = this.state;
-    const { onChangeName, onSave, onDelete, onSelectStudent, onChange } = this;
+    const { name, image, description } = this.state;
+    const { onChangeInfo, onSave, onDelete, onSelectStudent, onChange } = this;
     if(!campus) {
       return null;
     }
@@ -55,9 +51,13 @@ class Campus extends Component {
         <h2>Campus</h2>
         <h3>{ campus.name }</h3>
         <p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p>
+        <img src={campus.image} width={200}/>
+        <p>{campus.description}</p>
         
         <form onSubmit={ onSave }>
-          <input value={ name } onChange={ onChangeName }/>
+          <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/></p>
+          <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/></p>
+          <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/></p>
           <button disabled={ name.length === 0 }>Update</button>     
         </form>
         <button onClick={ onDelete }>Delete</button>  
