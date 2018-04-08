@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteStudent, saveStudent } from './store';
 
+
 class Student extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: this.props.student ? this.props.student.name : '',
+      campusId: -1
       // id: this.props.student ? this.props.student.id : '',
       // campusId: this.props.student.campusId
     };
@@ -37,17 +39,23 @@ class Student extends Component {
     this.setState({ campusId: ev.target.value * 1});
   }
   render() {
-    const { student, campuses, campusOfThisStudent } = this.props;
+    const { student, campuses } = this.props;
     const { name, id, campusId } = this.state;
     const { onChangeName, onSave, onDelete, onSelectCampus, onChange } = this;
     if (!student) {
       return null;
     }
+    const campusOfThisStudent = campuses.find(campus=> campus.id === student.campusId);
+    
+    const nameOfCampus = !!campusOfThisStudent ? `${student.name} is enrolled in ${campusOfThisStudent.name}` : `${student.name} is not yet enrolled in any campus`;
+    
+    // console.log('props are: ', this.props);
     return (
       <div>
 
         <h2>Student</h2>
         <h3>{ student.name }</h3>
+        <p><i>{nameOfCampus}</i></p>
 
         <form onSubmit={ onSave }>
           <input value={ name } onChange={ onChangeName }/>
@@ -73,6 +81,7 @@ class Student extends Component {
           Assign
           </button>
         </form>
+       
           
       </div>
     )

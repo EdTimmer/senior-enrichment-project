@@ -111,6 +111,7 @@ const saveCampus = (campus, history)=> {
 
 const saveStudent = (student, history)=> {
   if(student.id) {
+    console.log('student in the store is:', student)
     return (dispatch)=> {
       return axios.put(`/api/students/${student.id}`, student)
         .then( result => result.data)
@@ -166,21 +167,21 @@ const deleteStudent = (student, history)=> {
   }
 }
 
-const enrollStudent = (student, history)=> {
-  return (dispatch)=> {
-    return axios.put(`/api/students/${student.id}`, student)
-      .then( result => result.data)
-      .then( student => dispatch({
-        type: UPDATE_STUDENT,
-        student
-      })
-    )
-    .then(()=>console.log('student in the store is:', student))
-    .then(()=> {
-      history.push('/students');
-    })
-  }
-}
+// const enrollStudent = (student, history)=> {
+//   return (dispatch)=> {
+//     return axios.put(`/api/students/${student.id}`, student)
+//       .then( result => result.data)
+//       .then( student => dispatch({
+//         type: UPDATE_STUDENT,
+//         student
+//       })
+//     )
+//     .then(()=>console.log('student in the store is:', student))
+//     .then(()=> {
+//       history.push('/students');
+//     })
+//   }
+// }
 
 
 

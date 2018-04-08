@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteCampus, saveCampus, saveStudent } from './store';
+// import { timingSafeEqual } from 'crypto';
+import CampusSelectStudent from './CampusSelectStudent';
 
 class Campus extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: this.props.campus ? this.props.campus.name : '',
-      // student: FILL
+      // student: {id: null, name: '', campusId: null}
     }
     this.onSave = this.onSave.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
@@ -29,14 +31,16 @@ class Campus extends Component {
   }
   onSelectStudent(ev) {
     ev.preventDefault();
-    const student = this.props.students.find( student => student.id === this.state.id*1 );
-    student.campusId = this.props.id;
+    const student = this.props.students.find( student => student.id === this.state.student.id*1 );
+    // const student = {id: this.props.id, name: this.state.name, campusId: this.state.campusId}
     console.log('student is:', student);
+    // this.state.student.campusId = this.props.id;
+    
     // student.campusId = this.state.campusId
     this.props.saveStudent(student);  
   }
   onChange(ev){
-    this.setState({ campusId: ev.target.value * 1});
+    this.setState({ student: { id: student.id, name: student.name, campusId: this.props.id}});
   }
   render() {
     const { campus, students, id } = this.props;
@@ -58,13 +62,13 @@ class Campus extends Component {
         </form>
         <button onClick={ onDelete }>Delete</button>  
 
-        <form onSubmit={ this.onSelectStudent }>
+        {/* <form onSubmit={ this.onSelectStudent }>
           <select value={ id } onChange={ onChange }>
             <option value='-1'>Select Student</option>     
             {
               students.map( student => {
                 return (
-                  <option key={ student.id } value={ student }>
+                  <option key={ student.id } value={ student.id }>
                     { student.name }
                   </option>
                 );
@@ -74,8 +78,8 @@ class Campus extends Component {
           <button disabled={ id*1 === -1}>
           Assign
           </button>
-        </form>
-
+          </form> */}
+          <CampusSelectStudent id={id}/>
         <p><i>Our Students:</i></p>
         <ul>          
             {
