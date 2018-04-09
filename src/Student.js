@@ -17,15 +17,24 @@ class Student extends Component {
     const nameOfCampus = !!campusOfThisStudent ? `${student.fullName} is enrolled in ${campusOfThisStudent.name}` : `${student.fullName} is not yet enrolled in any campus`;    
 
     return (
-      <div>
-        <img src={student.image} width={400}/>
+      <div className='container'>
         <h2>{ student.fullName }</h2>
-        <h5>GPA:  { student.GPA }</h5>
-        <h5>Email:  { student.email }</h5>
-        <p><i>{nameOfCampus}</i></p>
-        <button>
-          <Link to={`/students/edit/${student.id}`}>Edit</Link>
-        </button>
+        <div className='row'>
+          <div className='col'>
+            <img src={student.image} width={400}/>
+          </div>
+          <div className='col'>
+            <h5>GPA:  { student.GPA }</h5>
+            <h5>Email:  { student.email }</h5>
+            <p><i>{nameOfCampus}</i></p>
+            <button>
+              <Link to={`/students/edit/${student.id}`}>Edit</Link>
+            </button>
+          </div>
+        </div>
+
+        
+
       </div>
   
   

@@ -46,11 +46,18 @@ class Campus extends Component {
     }
     const studentsOfThisCampus = students.filter( student => student.campusId === id)
     return (
-      <div >
+      <div className='container'>
         <h2>{ campus.name }</h2>
-        <p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p>
-        <img src={campus.image} height={300}/>
-        <p>{campus.description}</p>
+        <div className='row'>
+          <div className='col'>
+            <img src={campus.image} height={300}/>
+          </div>
+          <div className='col'>
+            
+            <p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p>
+            <p>{campus.description}</p>
+          </div>
+        </div>
         {/*
         <form onSubmit={ onSave }>
           <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/></p>
