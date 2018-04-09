@@ -48,8 +48,7 @@ class Campus extends Component {
     const studentsOfThisCampus = students.filter( student => student.campusId === id)
     return (
       <div>
-        <h2>Campus</h2>
-        <h3>{ campus.name }</h3>
+        <h2>{ campus.name }</h2>
         <p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p>
         <img src={campus.image} width={200}/>
         <p>{campus.description}</p>
@@ -58,9 +57,9 @@ class Campus extends Component {
           <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/></p>
           <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/></p>
           <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/></p>
-          <button disabled={ name.length === 0 }>Update</button>     
+          <button disabled={ name.length === 0 } type='button' className='btn-sm'>Update</button>     
         </form>
-        <button onClick={ onDelete }>Delete</button>  
+        <button onClick={ onDelete } type='button' className='btn-sm'>Delete</button>  
 
         {/* <form onSubmit={ this.onSelectStudent }>
           <select value={ id } onChange={ onChange }>

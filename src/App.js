@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { loadCampuses, loadStudents, saveCampus, saveStudent, deleteCampus, deleteStudent } from './store';
+// import { loadCampuses, loadStudents, saveCampus, saveStudent, deleteCampus, deleteStudent } from './store';
+import { loadCampuses, loadStudents } from './store';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './Nav';
@@ -10,6 +11,7 @@ import Student from './Student';
 import Home from './Home';
 import CampusCreate from './CampusCreate';
 import StudentCreate from './StudentCreate';
+import StudentEdit from './StudentEdit';
 
 class App extends Component {
   componentDidMount() {
@@ -29,6 +31,7 @@ class App extends Component {
             <Route path='/students/create' exact render={({history})=> <StudentCreate history={ history }/>}/>
             <Route path='/campuses/:id' exact render={({match, history})=> <Campus id={ match.params.id * 1 } history={ history }/>}/>
             <Route path='/students/:id' exact render={({match, history})=> <Student id={ match.params.id * 1 } history={ history }/>}/>
+            <Route path='/students/edit/:id' exact render={({match, history})=> <StudentEdit id={ match.params.id * 1 } history={ history }/>}/>
           </Switch>
         </div>
       </Router>

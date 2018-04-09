@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { deleteStudent, saveStudent } from './store';
 import { Link } from 'react-router-dom';
 
-class Student extends Component {
+class StudentEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,25 +52,25 @@ class Student extends Component {
 
     return (
       <div>
+      <h3>Edit information for: <strong>{student.name}</strong></h3>
         <h2>{ student.name }</h2>
         <h5>GPA:  { student.GPA }</h5>
         <h5>Email:  { student.email }</h5>
         <p><i>{nameOfCampus}</i></p>
 
-        <Link to={`/students/edit/${student.id}`}>Edit</Link>
         <p>Update Information for {student.name}:</p>
         <form onSubmit={ onSave }>
           <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeEntry }/></p>
           <p>Last Name: <input value={ lastName } name='lastName' onChange={ onChangeEntry }/></p>
           <p>GPA: <input value={ GPA } name='GPA' onChange={ onChangeEntry }/></p>
           <p>Email: <input value={ email } name='email' onChange={ onChangeEntry }/></p>
-          <button type='button' className='btn-sm' disabled={ firstName.length === 0 && lastName.length === 0 && email.length === 0}>Update Student</button>     
+          <button disabled={ firstName.length === 0 && lastName.length === 0 && email.length === 0 }>Update Student</button>     
         </form>
 
         <button onClick={ onDelete } type='button' className='btn-sm'>Delete Student</button>  
 
         <form onSubmit={ this.onSelectCampus }>
-          <select className='selectpicker' data-style='btn-primary' value={ campusId } name='campusId' onChange={ onChange }>
+          <select value={ campusId } name='campusId' onChange={ onChange }>
           <option value='-1'>Select Campus for {student.name}</option>     
           {
             availableCampuses.map( campus => {
@@ -106,4 +106,4 @@ const mapDispatchToProps = (dispatch, {history})=> {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Student);
+export default connect(mapStateToProps, mapDispatchToProps)(StudentEdit);
