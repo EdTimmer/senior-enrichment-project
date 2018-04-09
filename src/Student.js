@@ -18,12 +18,14 @@ class Student extends Component {
 
     return (
       <div>
+        <img src={student.image} width={400}/>
         <h2>{ student.fullName }</h2>
         <h5>GPA:  { student.GPA }</h5>
         <h5>Email:  { student.email }</h5>
         <p><i>{nameOfCampus}</i></p>
-    
-        <Link to={`/students/edit/${student.id}`}>Edit</Link>
+        <button>
+          <Link to={`/students/edit/${student.id}`}>Edit</Link>
+        </button>
       </div>
   
   

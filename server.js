@@ -27,13 +27,13 @@ app.get('/api/students', (req, res, next)=> {
     .catch(next);
 });
 
-app.post('/api/campuses/create', (req, res, next)=> {
+app.post('/api/campuses', (req, res, next)=> {
   Campus.create(req.body)
     .then( campus => res.send(campus))
     .catch(next);
 });
 
-app.post('/api/students/create', (req, res, next)=> {
+app.post('/api/students', (req, res, next)=> {
   Student.create(req.body)
     .then( student => res.send(student))
     .catch(next);
@@ -57,7 +57,7 @@ app.delete('/api/students/:id', (req, res, next)=> {
     .catch(next)
 });
 
-app.put('/api/students/edit/:id', (req, res, next)=> {
+app.put('/api/students/:id', (req, res, next)=> {
   Student.findById(req.params.id)
     .then( student => {
       Object.assign(student, req.body);

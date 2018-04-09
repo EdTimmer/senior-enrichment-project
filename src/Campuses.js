@@ -19,7 +19,9 @@ const Campuses = ({campuses})=> {
             })
           }
         </ul>
-        <Link to={'/campuses/create'}>Add Campus</Link>
+        <button>
+          <Link to={'/campuses/create'}>Add Campus</Link>
+        </button>
       </div>
     )  
   }

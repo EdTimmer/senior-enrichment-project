@@ -16,13 +16,14 @@ class CampusSelectStudent extends Component {
   onSelectStudent(ev) {
     ev.preventDefault();
     this.props.saveStudent(this.state)
-    .then(()=> this.setState({id: -1}))  
+    .then(()=> this.setState({id: -1})) 
+    // .then(()=> history.push('/students')) //added
   }
   onChange(ev){
     this.setState({ id: ev.target.value * 1});
   }
   render() {
-    const { campus, students } = this.props;
+    const { campus, students, history } = this.props; //added history
     const { id } = this.state;
     const { onSelectStudent, onChange } = this;
 
@@ -61,6 +62,7 @@ const mapStateToProps = ({ campuses, students }, { id })=> {
 };
 
 const mapDispatchToProps = (dispatch, {history, id})=> {
+  console.log('history in mapDispatchToProps is:', history)
   return {
     saveStudent: (student)=> dispatch(saveStudent(Object.assign(student, {campusId: id}), history))
   }

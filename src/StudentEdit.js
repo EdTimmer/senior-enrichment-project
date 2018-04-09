@@ -21,7 +21,7 @@ class StudentEdit extends Component {
     this.onChange = this.onChange.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps is:', nextProps);
+    // console.log('nextProps is:', nextProps);
     if(nextProps.student) {
       this.setState({
         firstName: nextProps.student.firstName,
@@ -78,7 +78,7 @@ class StudentEdit extends Component {
           <button disabled={ firstName.length === 0 && lastName.length === 0 && email.length === 0 }>Update Student</button>     
         </form>
 
-        <button onClick={ onDelete }>Delete Student</button>  
+         
 
         <p>{student.fullName} is currently enrolled in: {campusOfThisStudent.name}</p>
 
@@ -103,6 +103,7 @@ class StudentEdit extends Component {
           TESTING:
         <StudentSelectCampus id={id}/>
         */}
+        <button onClick={ onDelete }>Delete Student</button> 
       </div>
     )
   }

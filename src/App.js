@@ -12,6 +12,7 @@ import Home from './Home';
 import CampusCreate from './CampusCreate';
 import StudentCreate from './StudentCreate';
 import StudentEdit from './StudentEdit';
+import CampusEdit from './CampusEdit';
 
 class App extends Component {
   componentDidMount() {
@@ -30,6 +31,7 @@ class App extends Component {
             <Route path='/campuses/create' exact render={({history})=> <CampusCreate history={ history }/>}/>
             <Route path='/students/create' exact render={({history})=> <StudentCreate history={ history }/>}/>
             <Route path='/campuses/detail/:id' exact render={({match, history})=> <Campus id={ match.params.id * 1 } history={ history }/>}/>
+            <Route path='/campuses/edit/:id' exact render={({match, history})=> <CampusEdit id={ match.params.id * 1 } history={ history }/>}/>
             <Route path='/students/detail/:id' exact render={({match, history})=> <Student id={ match.params.id * 1 } history={ history }/>}/>
             <Route path='/students/edit/:id' exact render={({match, history})=> <StudentEdit id={ match.params.id * 1 } history={ history }/>}/>
           </Switch>

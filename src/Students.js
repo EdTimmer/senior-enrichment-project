@@ -19,17 +19,18 @@ const Students = ({students, campuses})=> {
               return (
                 <li key={student.id}>
                   <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
-                  <br />
-                  Enrolled in:
-                  {campusName}
-                  <br />               
+                  
+                  <p>Enrolled in: {campusName}</p>
+                                
                 </li>  
            
               )
             })          
           }
         </ul>
-        <Link to={'/students/create'}>Add Student</Link>              
+        <button>
+          <Link to={'/students/create'}>Add Student</Link>
+        </button>              
       </div>
     ) 
   }

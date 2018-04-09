@@ -96,7 +96,7 @@ const saveCampus = (campus, history)=> {
     }
   }
   return (dispatch)=> {
-    axios.post('/api/campuses/create', campus)
+    axios.post('/api/campuses', campus)
       .then( result => result.data)
       .then( campus => {
         _campus = campus;
@@ -115,7 +115,7 @@ const saveStudent = (student, history)=> {
   let _student;
   if(student.id) {
     return (dispatch)=> {
-      return axios.put(`/api/students/edit/${student.id}`, student)
+      return axios.put(`/api/students/${student.id}`, student)
         .then( result => result.data)
         .then( student => {
           _student = student;
@@ -124,13 +124,14 @@ const saveStudent = (student, history)=> {
             student
           })
         })
+        .then(()=> console.log('history in the store is:', history))
         .then( ()=> {
           history.push(`/students/detail/${_student.id}`);  
         })
     }
   }
   return (dispatch)=> {
-    axios.post('/api/students/create', student)
+    axios.post('/api/students', student)
       .then( result => result.data)
       .then( student => {
         _student = student;
