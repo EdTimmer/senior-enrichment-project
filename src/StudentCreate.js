@@ -33,7 +33,7 @@ class StudentCreate extends Component {
           <p>Last Name: <input value={ lastName } name='lastName' onChange={ onChangeInfo }/></p> 
           <p>GPA: <input value={ GPA } name='GPA' onChange={ onChangeInfo }/></p>
           <p>Email: <input value={ email } name='email' onChange={ onChangeInfo }/></p>
-          <button disabled={firstName.length === 0 && lastName.length === 0 && email.length === 0} type='button' className='btn-sm'>Add Student</button>
+          <button disabled={firstName.length === 0 && lastName.length === 0 && email.length === 0}>Add Student</button>
         </form>
       </div>
     )

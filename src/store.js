@@ -82,13 +82,16 @@ const saveCampus = (campus, history)=> {
     return (dispatch)=> {
       return axios.put(`/api/campuses/${campus.id}`, campus)
         .then( result => result.data)
-        .then( campus => dispatch({
-          type: UPDATE_CAMPUS,
-          campus
-        })
+        .then( campus => {
+          _campus = campus;
+          dispatch({
+            type: UPDATE_CAMPUS,
+            campus
+          })
+        }
       )
       .then(()=> {
-        history.push(`/campuses/${campus.id}`);
+        history.push(`/campuses/detail/${campus.id}`);
       })
     }
   }
@@ -103,7 +106,7 @@ const saveCampus = (campus, history)=> {
         })
       })
     .then( ()=> {
-      history.push(`/campuses/${_campus.id}`);  
+      history.push(`/campuses/detail/${_campus.id}`);  
     })
   }
 }
@@ -112,13 +115,18 @@ const saveStudent = (student, history)=> {
   let _student;
   if(student.id) {
     return (dispatch)=> {
-      return axios.put(`/api/students/${student.id}`, student)
+      return axios.put(`/api/students/edit/${student.id}`, student)
         .then( result => result.data)
-        .then( student => dispatch({
-          type: UPDATE_STUDENT,
-          student
+        .then( student => {
+          _student = student;
+          dispatch({
+            type: UPDATE_STUDENT,
+            student
+          })
         })
-      )
+        .then( ()=> {
+          history.push(`/students/detail/${_student.id}`);  
+        })
     }
   }
   return (dispatch)=> {
@@ -132,7 +140,7 @@ const saveStudent = (student, history)=> {
         })
       })
     .then( ()=> {
-      history.push(`/students/${_student.id}`);  
+      history.push(`/students/detail/${_student.id}`);  
     })
   }
 }

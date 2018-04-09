@@ -33,11 +33,11 @@ class StudentEdit extends Component {
   onSelectCampus(ev) {
     ev.preventDefault();
     const campus = this.props.campuses.find( campus => campus.id === this.state.id*1 );
-    const student = {id: this.props.id, firstName: this.state.firstName, lastName: this.state.firstName, GPA: this.state.GPA, email: this.state.email, campusId: this.state.campusId}
+    const student = {id: this.props.id, firstName: this.state.firstName, lastName: this.state.lastName, GPA: this.state.GPA, email: this.state.email, campusId: this.state.campusId}
     this.props.saveStudent(student);  
   }
   onChange(ev){
-    this.setState({ campusId: ev.target.value * 1});
+    this.setState({ [ev.target.name]: ev.target.value * 1});
   }
   render() {
     const { student, campuses } = this.props;
@@ -46,19 +46,19 @@ class StudentEdit extends Component {
     if (!student) {
       return null;
     }
-    const campusOfThisStudent = campuses.find(campus=> campus.id === student.campusId);    
-    const nameOfCampus = !!campusOfThisStudent ? `${student.name} is enrolled in ${campusOfThisStudent.name}` : `${student.name} is not yet enrolled in any campus`;    
+    console.log('campuses is:', campuses);
+    console.log('student is:', student);
+    let campusOfThisStudent = campuses.find(campus=> campus.id === student.campusId); 
+    if (!campusOfThisStudent) {
+      campusOfThisStudent = {};
+      campusOfThisStudent.name = 'none of the campuses';
+    } 
     const availableCampuses = campuses.filter(campus => campus.id !== student.campusId);
+    console.log('campusOfThisStudent :', campusOfThisStudent);
 
     return (
-      <div>
-      <h3>Edit information for: <strong>{student.name}</strong></h3>
-        <h2>{ student.name }</h2>
-        <h5>GPA:  { student.GPA }</h5>
-        <h5>Email:  { student.email }</h5>
-        <p><i>{nameOfCampus}</i></p>
-
-        <p>Update Information for {student.name}:</p>
+      <div>      
+        <p>Update Information for {student.fullName}:</p>
         <form onSubmit={ onSave }>
           <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeEntry }/></p>
           <p>Last Name: <input value={ lastName } name='lastName' onChange={ onChangeEntry }/></p>
@@ -67,11 +67,13 @@ class StudentEdit extends Component {
           <button disabled={ firstName.length === 0 && lastName.length === 0 && email.length === 0 }>Update Student</button>     
         </form>
 
-        <button onClick={ onDelete } type='button' className='btn-sm'>Delete Student</button>  
+        <button onClick={ onDelete }>Delete Student</button>  
+
+        <p>{student.fullName} is currently enrolled in: {campusOfThisStudent.name}</p>
 
         <form onSubmit={ this.onSelectCampus }>
           <select value={ campusId } name='campusId' onChange={ onChange }>
-          <option value='-1'>Select Campus for {student.name}</option>     
+          <option value='-1'>Select Campus</option>     
           {
             availableCampuses.map( campus => {
               return (
@@ -82,7 +84,7 @@ class StudentEdit extends Component {
             })
           }
           </select>
-          <button disabled={ campusId*1 === -1} type='button' className='btn-sm'>
+          <button disabled={ campusId*1 === -1}>
           Assign
           </button>
         </form>          

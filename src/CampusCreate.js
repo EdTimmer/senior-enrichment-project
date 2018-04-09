@@ -31,7 +31,7 @@ class CampusCreate extends Component {
           <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/></p>
           <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/></p>
           <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/></p>
-          <button disabled={name.length === 0} type='button' className='btn-sm'>Add Campus</button>
+          <button disabled={name.length === 0}>Add Campus</button>
         </form>
       </div>
     )

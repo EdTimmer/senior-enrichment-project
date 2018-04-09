@@ -20,7 +20,7 @@ const Students = ({students, campuses})=> {
     
               return (
                 <li key={student.id}>
-                  <Link to={`/students/${student.id}`}>{student.name}</Link>
+                  <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
                   <br />
                   Enrolled in:
                   {campusName}

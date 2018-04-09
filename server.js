@@ -56,7 +56,7 @@ app.delete('/api/students/:id', (req, res, next)=> {
     .catch(next)
 });
 
-app.put('/api/students/:id', (req, res, next)=> {
+app.put('/api/students/edit/:id', (req, res, next)=> {
   Student.findById(req.params.id)
     .then( student => {
       Object.assign(student, req.body);

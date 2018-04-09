@@ -27,7 +27,7 @@ const Student = conn.define('student', {
     }  
 }, {
   getterMethods: {
-    name: function() {
+    fullName: function() {
       return this.firstName + ' ' + this.lastName;
     }
   }

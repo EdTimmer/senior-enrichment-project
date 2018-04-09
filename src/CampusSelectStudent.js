@@ -38,13 +38,13 @@ class CampusSelectStudent extends Component {
               notEnrolledStudents.map( student => {
                 return (
                   <option key={ student.id } value={ student.id }>
-                    { student.name }
+                    { student.fullName }
                   </option>
                 );
               })
             }
           </select>
-          <button disabled={ id*1 === -1} type='button' className='btn-sm'>
+          <button disabled={ id*1 === -1}>
           Assign
           </button>
         </form>        

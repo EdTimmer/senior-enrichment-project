@@ -14,7 +14,7 @@ class StudentSelectCampus extends Component {
   onSelectCampus(ev) {
     ev.preventDefault();
     const campus = this.props.campuses.find( campus => campus.id === this.state.id*1 );
-    const student = {id: this.props.id, name: this.props.student.name, campusId: this.state.campusId}
+    const student = {id: this.props.id, firstName: this.props.student.firstName, lastName: this.props.student.lastName, campusId: this.state.campusId}
     this.props.saveStudent(student);  
   }
   onChange(ev){
@@ -22,7 +22,7 @@ class StudentSelectCampus extends Component {
   }
   render() {
     const { student, campuses } = this.props;
-    const { name, id, campusId } = this.state;
+    const { firstName, lastName, id, campusId } = this.state;
     const { onSelectCampus, onChange } = this;
     console.log('props are: ', this.props)
      

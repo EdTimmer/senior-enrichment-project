@@ -36,7 +36,7 @@ class Campus extends Component {
     this.props.saveStudent(student);  
   }
   onChange(ev){
-    this.setState({ student: { id: student.id, name: student.name, campusId: this.props.id}});
+    this.setState({ student: { id: student.id, firstName: student.firstName, lastName: student.lastName, campusId: this.props.id}});
   }
   render() {
     const { campus, students, id } = this.props;
@@ -57,9 +57,9 @@ class Campus extends Component {
           <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/></p>
           <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/></p>
           <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/></p>
-          <button disabled={ name.length === 0 } type='button' className='btn-sm'>Update</button>     
+          <button disabled={ name.length === 0 }>Update</button>     
         </form>
-        <button onClick={ onDelete } type='button' className='btn-sm'>Delete</button>  
+        <button onClick={ onDelete }>Delete</button>  
 
         {/* <form onSubmit={ this.onSelectStudent }>
           <select value={ id } onChange={ onChange }>
@@ -85,7 +85,7 @@ class Campus extends Component {
               studentsOfThisCampus.map(student => {
                 return (
                   <li key={student.id}>
-                    <Link to={`/students/${student.id}`}>{student.name}</Link>
+                    <Link to={`/students/${student.id}`}>{student.fullName}</Link>
                   </li>
                 )
               })
