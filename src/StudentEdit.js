@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteStudent, saveStudent } from './store';
 import { Link } from 'react-router-dom';
+// import StudentSelectCampus from './StudentSelectCampus';
 
 class StudentEdit extends Component {
   constructor(props) {
@@ -19,6 +20,19 @@ class StudentEdit extends Component {
     this.onSelectCampus = this.onSelectCampus.bind(this);
     this.onChange = this.onChange.bind(this);
   }
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps is:', nextProps);
+    if(nextProps.student) {
+      this.setState({
+        firstName: nextProps.student.firstName,
+        lastName: nextProps.student.lastName,
+        GPA: nextProps.student.GPA,
+        email: nextProps.student.email,
+        campusId: nextProps.student.campusId
+      })
+    }
+  }
+
   onSave(ev) {
     ev.preventDefault();
     const student = { id: this.props.id, firstName: this.state.firstName, lastName: this.state.lastName, GPA: this.state.GPA, email: this.state.email };
@@ -40,22 +54,19 @@ class StudentEdit extends Component {
     this.setState({ [ev.target.name]: ev.target.value * 1});
   }
   render() {
-    const { student, campuses } = this.props;
-    const { firstName, lastName, id, campusId, GPA, email } = this.state;
+    const { student, campuses, id } = this.props;  // added id
+    const { firstName, lastName, campusId, GPA, email } = this.state;   //removed id
     const { onChangeEntry, onSave, onDelete, onSelectCampus, onChange } = this;
     if (!student) {
       return null;
     }
-    console.log('campuses is:', campuses);
-    console.log('student is:', student);
     let campusOfThisStudent = campuses.find(campus=> campus.id === student.campusId); 
     if (!campusOfThisStudent) {
       campusOfThisStudent = {};
       campusOfThisStudent.name = 'none of the campuses';
     } 
     const availableCampuses = campuses.filter(campus => campus.id !== student.campusId);
-    console.log('campusOfThisStudent :', campusOfThisStudent);
-
+    
     return (
       <div>      
         <p>Update Information for {student.fullName}:</p>
@@ -88,6 +99,10 @@ class StudentEdit extends Component {
           Assign
           </button>
         </form>          
+        {/* 
+          TESTING:
+        <StudentSelectCampus id={id}/>
+        */}
       </div>
     )
   }
@@ -95,6 +110,7 @@ class StudentEdit extends Component {
 
 const mapStateToProps = ({ students, campuses }, { id })=> {
   const student = students.find( student => student.id === id );
+  // console.log('student in mapStateToProps is:', student);
   return {
     student,
     campuses

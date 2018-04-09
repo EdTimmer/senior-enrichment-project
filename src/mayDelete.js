@@ -22,17 +22,17 @@ class StudentSelectCampus extends Component {
   }
   render() {
     const { student, campuses } = this.props;
-    const { firstName, lastName, id, campusId } = this.state;
+    const { firstName, lastName, campusId } = this.state;
     const { onSelectCampus, onChange } = this;
-    console.log('props are: ', this.props)
-     
+    // console.log('props are: ', this.props)
+    const availableCampuses = campuses.filter(campus => campus.id !== student.campusId); 
     return (
       <div>
         <form onSubmit={ this.onSelectCampus }>
           <select value={ campusId } onChange={ onChange }>
           <option value='-1'>Select Campus</option>     
           {
-            campuses.map( campus => {
+            availableCampuses.map( campus => {
               return (
                 <option key={ campus.id } value={ campus.id }>
                   { campus.name }
@@ -50,9 +50,11 @@ class StudentSelectCampus extends Component {
   }
 }
 
-const mapStateToProps = ({ students, campuses }, { id })=> {
-  
+const mapStateToProps = ({ students, campuses }, { id })=> {  
   const student = students.find( student => student.id === id );
+  // console.log('students in mapStateToProps in StudentSelectCampus are:', students)
+  console.log('id in mapStateToProps is:', id)
+  console.log('student in mapStateToProps in StudentSelectCampus is:', student)
   return {
     student,
     campuses

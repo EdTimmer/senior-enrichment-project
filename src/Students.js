@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import StudentSelectCampus from './StudentSelectCampus'
 
 const Students = ({students, campuses})=> {
   if (students.length > 0) {
@@ -30,7 +29,7 @@ const Students = ({students, campuses})=> {
             })          
           }
         </ul>
-        <Link to={'/students/create'}>Add Student</Link>      
+        <Link to={'/students/create'}>Add Student</Link>              
       </div>
     ) 
   }

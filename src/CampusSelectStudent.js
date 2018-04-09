@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteCampus, saveCampus, saveStudent } from './store';
-import { timingSafeEqual } from 'crypto';
+// import { timingSafeEqual } from 'crypto';
 
 class CampusSelectStudent extends Component {
   constructor(props) {
@@ -20,7 +20,6 @@ class CampusSelectStudent extends Component {
   }
   onChange(ev){
     this.setState({ id: ev.target.value * 1});
-    // console.log('ev.target.value is:', ev.target.value);
   }
   render() {
     const { campus, students } = this.props;
