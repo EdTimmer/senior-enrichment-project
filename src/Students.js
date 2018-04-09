@@ -8,8 +8,7 @@ const Students = ({students, campuses})=> {
     return (
       <div>
         <h2>All Students</h2>
-        <p><i>Number of all students:</i> <strong>{students.length}</strong></p>
-        <Link to={'/students/create'}>Add Student</Link>
+        <p><i>Number of all students:</i> <strong>{students.length}</strong></p>        
         <ul>
           {
             students.map(student => {
@@ -30,7 +29,8 @@ const Students = ({students, campuses})=> {
               )
             })          
           }
-        </ul>      
+        </ul>
+        <Link to={'/students/create'}>Add Student</Link>      
       </div>
     ) 
   }
