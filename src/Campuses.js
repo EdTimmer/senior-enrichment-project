@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Campuses = ({campuses})=> {
+const Campuses = ({campuses, students})=> {
   if (campuses.length > 0) {
     return (
       <div>
@@ -28,7 +28,9 @@ const Campuses = ({campuses})=> {
                     </div>
                     <div className='col'>
                       <Link to={`/campuses/detail/${campus.id}`}>{campus.name}</Link>
-                    </div>                    
+                      <p><i>Number of students:</i> {students.filter( student => student.campusId === campus.id).length}</p>
+                    
+                    </div>                
                   </li>
                   <br />
                 </div>
@@ -51,9 +53,10 @@ const Campuses = ({campuses})=> {
 
 }
 
-const mapStateToProps = ({ campuses })=> {
+const mapStateToProps = ({ campuses, students })=> {
   return {
-    campuses
+    campuses,
+    students
   }
 };
 

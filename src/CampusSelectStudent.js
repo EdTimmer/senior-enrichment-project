@@ -62,9 +62,9 @@ const mapStateToProps = ({ campuses, students }, { id })=> {
 };
 
 const mapDispatchToProps = (dispatch, {parentHistory, id})=> {
-  console.log('id in mapDispatchToProps in Campus SelectStudent is:', id)
+  // console.log('id in mapDispatchToProps in Campus SelectStudent is:', id)
   return {
-    saveStudent: (student)=> dispatch(saveStudent(Object.assign(student, {campusId: id}), parentHistory, 'dropdown', id))
+    saveStudent: (student)=> dispatch(saveStudent(Object.assign(student, {campusId: id}), parentHistory, id))  //revomed 'dropdown' third parameter
   }
 }
 
