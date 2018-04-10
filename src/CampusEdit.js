@@ -10,11 +10,29 @@ class CampusEdit extends Component {
     this.state = {
       name: this.props.campus ? this.props.campus.name : '',
       image: this.props.campus ? this.props.campus.image : '',
-      description: this.props.campus ? this.props.campus.description : ''
+      description: this.props.campus ? this.props.campus.description : '',
+      errors: {}
     }
     this.onSave = this.onSave.bind(this);
     this.onChangeInfo = this.onChangeInfo.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.validators = {
+      name: (value)=> {
+        if(!value) {
+          return 'Campus name is required';
+        }
+      },
+      image: (value)=> {
+        if(!value) {
+          return 'Image URL is required';
+        }
+      },
+      description: (value)=> {
+        if(!value) {
+          return 'Campus description is required';
+        }
+      },
+    }
     // this.onSelectStudent = this.onSelectStudent.bind(this);
     // this.onChange = this.onChange.bind(this);
   }
@@ -30,6 +48,19 @@ class CampusEdit extends Component {
   }
   onSave(ev) {
     ev.preventDefault();
+    const errors = Object.keys(this.validators).reduce((memo, key)=> {
+      const validator = this.validators[key];
+      const value = this.state[key];
+      const error = validator(value);
+      if(error) {
+        memo[key] = error;
+      }
+      return memo;
+    }, {});
+    this.setState({ errors });
+    if (Object.keys(errors).length) {
+      return;  
+    }
     const campus = { id: this.props.id, name: this.state.name, image: this.state.image, description: this.state.description };
     this.props.saveCampus(campus);
   }
@@ -49,7 +80,7 @@ class CampusEdit extends Component {
   // }
   render() {
     const { campus, students, id } = this.props; 
-    const { name, image, description } = this.state;
+    const { name, image, description, errors } = this.state;
     const { onChangeInfo, onSave, onDelete } = this;  //removed onSelectStudent and onChange
     if(!campus) {
       return null;
@@ -64,14 +95,27 @@ class CampusEdit extends Component {
         <p>{campus.description}</p>
         
         <form onSubmit={ onSave }>
-          <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/></p>
-          <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/></p>
-          <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/></p>
-          <button disabled={ name.length === 0 }>Update</button>     
+          <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/>
+            {
+              errors.name
+            }
+          </p>
+          <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/>
+            {
+              errors.image
+            }
+          </p>
+          <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/>
+            {
+              errors.description
+            }
+          </p>
+          <button>Update</button>     
         </form>
         
+        {/*<button disabled={ name.length === 0 }>Update</button> */}
 
-        <CampusSelectStudent id={id} history={history}/>
+        <CampusSelectStudent id={id} parentHistory={this.props.history}/>
 
         <p><i>Our Students:</i></p>
         <ul>          
@@ -100,6 +144,7 @@ const mapStateToProps = ({ campuses, students }, { id })=> {
 };
 
 const mapDispatchToProps = (dispatch, {history})=> {
+  console.log('history in CampusEdit dispatch:', history);
   return {
     saveCampus: (campus)=> dispatch(saveCampus(campus, history)),
     deleteCampus: (campus)=> dispatch(deleteCampus(campus, history)),

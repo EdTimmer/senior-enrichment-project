@@ -90,6 +90,7 @@ const saveCampus = (campus, history)=> {
           })
         }
       )
+      .then(()=> console.log('history in the saveCampus thunk in store is:', history))
       .then(()=> {
         history.push(`/campuses/detail/${campus.id}`);
       })
@@ -111,7 +112,7 @@ const saveCampus = (campus, history)=> {
   }
 }
 
-const saveStudent = (student, history)=> {
+const saveStudent = (student, history, source, campusId)=> {
   let _student;
   if(student.id) {
     return (dispatch)=> {
@@ -124,9 +125,16 @@ const saveStudent = (student, history)=> {
             student
           })
         })
-        .then(()=> console.log('history in the store is:', history))
+        .then(()=> console.log('source in the saveStudent thunk in store is:', source))
+        .then(()=> console.log('campusId in the saveStudent thunk in store is:', campusId))
         .then( ()=> {
-          history.push(`/students/detail/${_student.id}`);  
+          if(source === 'dropdown') {
+            history.push(`/campuses/detail/${campusId}`); 
+          }
+          else {
+            history.push(`/students/detail/${_student.id}`); 
+          }
+           
         })
     }
   }

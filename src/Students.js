@@ -7,30 +7,44 @@ const Students = ({students, campuses})=> {
     return (
       <div>
         <h2>All Students</h2>
-        <p><i>Number of all students:</i> <strong>{students.length}</strong></p>        
-        <ul>
+        <div className='row'>
+        <div className='col'>
+          <p><i>Number of all students:</i> <strong>{students.length}</strong></p> 
+        </div>             
+        <div className='col'>
+          <button>
+            <Link to={'/students/create'}>Add Student</Link>
+          </button>  
+        </div>
+      </div>      
+
+
+        <ul className='list-group'>
           {
             students.map(student => {
               const campus = campuses.find(campus=> campus.id === student.campusId);
               // console.log('campus is:', campus)
-              const campusName = campus ? <Link to={`/campuses/${campus.id}`}>{campus.name}
+              const campusName = campus ? <Link to={`/campuses/detail/${campus.id}`}>{campus.name}
           </Link> : 'none'
     
               return (
-                <li key={student.id}>
-                  <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
-                  
-                  <p>Enrolled in: {campusName}</p>
-                                
-                </li>  
+                <div>
+                  <li key={student.id} className='list-group-item list-group-item-success' className='row'>
+                    <div className='col'>
+                      <img src={student.image} width={100} />
+                    </div>
+                    <div className='col'>
+                      <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>                  
+                      <p>Enrolled in: {campusName}</p>
+                    </div>                                
+                  </li>  
+                  <br />
+                </div>
            
               )
             })          
           }
-        </ul>
-        <button>
-          <Link to={'/students/create'}>Add Student</Link>
-        </button>              
+        </ul>            
       </div>
     ) 
   }

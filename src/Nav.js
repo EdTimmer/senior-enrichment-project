@@ -3,34 +3,35 @@ import { Link } from 'react-router-dom';
 
 const Nav = ({ path })=> {
   return (
-    <ul className='nav nav-tabs'>
-      <li className='nav-item'>
+    <ul className='row'>
+    <div className='col'>
         {
           path === '/' ? (
-            <span className='nav-link active'>Home</span>            
+            <span>Home</span>            
           ) : (
-            <Link to='/' className='nav-link'>Home</Link>
+            <Link to='/'>Home</Link>
           )
         }
-      </li>
-      <li className='nav-item'>
+        
+      </div>
+      <div className='col'>
         {
           path === '/campuses' ? (
-            <span className='nav-link active'>All Campuses</span>            
+            <span>All Campuses</span>            
           ) : (
-            <Link to='/campuses' className='nav-link'>All Campuses</Link>
+            <Link to='/campuses'>All Campuses</Link>
           )
         }
-      </li>
-      <li className='nav-item'>
+      </div>
+      <div className='col'>
         {
           path === '/students' ? (
-            <span className='nav-link active'>All Students</span>            
+            <span>All Students</span>            
           ) : (
-            <Link to='/students' className='nav-link'>All Students</Link>
+            <Link to='/students'>All Students</Link>
           )
         }
-      </li>
+      </div>
     </ul>
   );
 };

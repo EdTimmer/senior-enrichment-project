@@ -7,21 +7,36 @@ const Campuses = ({campuses})=> {
     return (
       <div>
         <h2>All Campuses</h2>
-        <p><i>Number of Campuses:</i> <strong>{campuses.length}</strong></p>        
-        <ul>
+        <div className='row'>
+          <div className='col'>
+            <p><i>Number of Campuses:</i> <strong>{campuses.length}</strong></p> 
+          </div>             
+          <div className='col'>
+            <button>
+              <Link to={'/campuses/create'}>Add Campus</Link>
+            </button>  
+          </div>
+        </div>  
+        <ul className='list-group'>
           {
             campuses.map(campus => {
               return (
-                <li key={campus.id}>
-                  <Link to={`/campuses/detail/${campus.id}`}>{campus.name}</Link>
-                </li>
+                <div>
+                  <li key={campus.id} className='list-group-item list-group-item-success' className='row'>
+                    <div className='col'>
+                      <img src={campus.image} height={100} />
+                    </div>
+                    <div className='col'>
+                      <Link to={`/campuses/detail/${campus.id}`}>{campus.name}</Link>
+                    </div>                    
+                  </li>
+                  <br />
+                </div>
               )
             })
           }
         </ul>
-        <button>
-          <Link to={'/campuses/create'}>Add Campus</Link>
-        </button>
+
       </div>
     )  
   }

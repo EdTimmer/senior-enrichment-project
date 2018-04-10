@@ -5,12 +5,12 @@ const Student = conn.define('student', {
   firstName: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
+    unique: false
   },
   lastName: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
+    unique: false
   },
   GPA: {
     type: Sequelize.DECIMAL,
@@ -36,7 +36,7 @@ const Student = conn.define('student', {
 }, {
   getterMethods: {
     fullName: function() {
-      return this.firstName + ' ' + this.lastName;
+      return `${this.firstName} ${this.lastName}`;
     },
     // image: function() {
     //   return null;
