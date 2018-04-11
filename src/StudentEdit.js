@@ -115,8 +115,19 @@ class StudentEdit extends Component {
     const availableCampuses = campuses.filter(campus => campus.id !== student.campusId);
     
     return (
-      <div>      
-        <p>Update Information for <b>{student.fullName}</b>:</p>
+      <div>
+        <div className='row'>
+          <div className='col'>
+            <p>Update Information for <b>{student.fullName}</b>:</p>
+          </div>
+          <div className='col'>
+            <button onClick={ onDelete }>Delete</button> 
+          </div>
+        </div>
+ 
+      
+
+      
         <div className='row'>
           <div className='col'>
             <img src={student.image} width={400}/>
@@ -151,15 +162,9 @@ class StudentEdit extends Component {
               <button>Update</button>   
                 
             </form>
-            <button onClick={ onDelete }>Delete</button> 
-          </div>
+            
         </div>
-        
-
-
-        {/* <button disabled={ firstName.length === 0 || lastName.length === 0 || email.length === 0 || GPA*1 > 4}>Update Student</button>*/}
-
-         
+                 
 
         <p>{student.fullName} is currently enrolled in: <Link to={`/campuses/detail/${campusOfThisStudent.id}`}>{campusOfThisStudent.name}</Link></p>
 
@@ -178,12 +183,9 @@ class StudentEdit extends Component {
           </select>
           <button disabled={ campusId*1 === -1}>Enroll</button>
         </form>          
-        {/* 
-          TESTING:
-        <StudentSelectCampus id={id}/>
-        */}
-        
-      </div>
+       </div>
+    </div>
+      
     )
   }
 };

@@ -100,7 +100,14 @@ class CampusEdit extends Component {
 
     return (
       <div>
-        <h4>Update information for <b>{ campus.name }</b></h4>
+        <div className='row'>
+          <div className='col'>
+            <h4>Update information for <b>{ campus.name }</b></h4>
+          </div>
+          <div className='col'>      
+            <button onClick={ onDelete }>Delete</button> 
+          </div>  
+        </div> 
           <div className='row'> 
             <div className='col'>
               <img src={campus.image} width={400}/>
@@ -129,8 +136,9 @@ class CampusEdit extends Component {
                 </p>
                 <button>Update</button>               
               </form>
-              <button onClick={ onDelete }>Delete</button> 
-            </div>
+            </div>  
+     
+           
           </div>   
         
         

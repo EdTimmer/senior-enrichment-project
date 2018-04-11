@@ -45,7 +45,7 @@ select {
   margin: 20px;
   /* border: 1px solid rgb(177, 11, 121);   */
   border-radius: 5px;
-  background: transparent;
+  background: lightseagreen;
   width: 150px;
   padding: 5px 5px 5px 5px;
   font-size: 16px;
@@ -55,11 +55,12 @@ select {
   -moz-appearance: none;
   font-weight: bold;
   color: white;
+  /* background: transparent; */
   /* appearance: none; */
   /* background: url(http://www.stackoverflow.com/favicon.ico) 96% / 15% no-repeat #eee; */
 }
 input {
-  border: 1px solid black;  
+  border: 2px solid grey;  
   border-radius: 5px;
   padding: 5px 5px 5px 5px;
   margin: 0, 15px, 0, 5px;
