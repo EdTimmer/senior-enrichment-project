@@ -78,10 +78,10 @@ class Campus extends Component {
             {
               studentsOfThisCampus.map(student => {
                 return (
-                  <li key={student.id}>
+                  <div key={student.id}>
                     <img src={student.image} height={50} />
                     <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
-                  </li>
+                  </div>
                 )
               })
             }         

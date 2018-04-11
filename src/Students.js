@@ -38,7 +38,7 @@ const Students = ({students, campuses})=> {
                       <p><i>Enrolled in:</i> {campusName}</p>
                     </div>                                
                   </li>  
-                  <br />
+                  
                 </div>
            
               )
