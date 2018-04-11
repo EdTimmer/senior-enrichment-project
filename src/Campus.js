@@ -14,10 +14,17 @@ const Campus = ({ campus, students, id, studentsOfThisCampus})=> {
             <img src={campus.image} height={300}/>
           </div>
           <div className='col'>
-            
-            <p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p>
-            <p>{campus.description}</p>    
-            <p>Our Motto: <b><i>{campus.motto}</i></b></p>
+            <table>
+            <tr>
+            <td><p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p></td>
+            </tr>
+            <tr>
+            <td><p>{campus.description}</p></td>    
+            </tr>
+            <tr>
+            <td><p>Our Motto: <b><i>{campus.motto}</i></b></p></td>
+            </tr>          
+            </table>
             <button>
               <Link to={`/campuses/edit/${campus.id}`}>Edit</Link>
             </button>        

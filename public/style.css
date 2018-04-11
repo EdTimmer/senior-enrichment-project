@@ -1,26 +1,46 @@
 
 a {
-  color: white;
+  color: whitesmoke;
   font-weight: bold;
   text-decoration: underline;
+  /* text-shadow:
+  -1px -1px 0 grey,
+  1px -1px 0 grey,
+  -1px 1px 0 grey,
+  1px 1px 0 grey;   */
 }
 h2 {
   color: white;
 }
 h3 {
-  color: greenyellow;
+  color: yellow;
   font-weight: bold;
+  text-shadow:
+  -1px -1px 0 grey,
+  1px -1px 0 grey,
+  -1px 1px 0 grey,
+  1px 1px 0 grey;
 }
 h4 {
   color: yellow;
   font-weight: bold;
+  text-shadow:
+  -1px -1px 0 grey,
+  1px -1px 0 grey,
+  -1px 1px 0 grey,
+  1px 1px 0 grey;
 }
 h5 {
   color: white;
 }
 p {
-  color: white;
+  color: whitesmoke;
   font-weight: bold;
+  /* text-shadow:
+  -1px -1px 0 gray,
+  1px -1px 0 gray,
+  -1px 1px 0 gray,
+  1px 1px 0 gray; */
 }
 button {
   /* background-color: purple;
@@ -38,8 +58,12 @@ button {
   height: 34px;
   -webkit-appearance: none;
   -moz-appearance: none;
-  color: white
-  
+  color: white;
+  /* text-shadow:
+  -1px -1px 0 grey,
+  1px -1px 0 grey,
+  -1px 1px 0 grey,
+  1px 1px 0 grey;   */
 }
 select {
   margin: 20px;
@@ -77,6 +101,19 @@ img {
 } */
 
 /* .col-md-6 { width: 45%; float: left; text-align : center; margin: 0 10px; overflow: hidden;} */
+
+table {
+  background-color: rgb(14, 124, 158);
+  padding: 10px;
+  border-radius: 15px;
+  /* border-color: yellow; */
+  /* border: 2px solid yellow; */
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
 
 body {
   background-image: url('./img/water.jpeg');
