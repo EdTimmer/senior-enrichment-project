@@ -127,6 +127,7 @@ const saveStudent = (student, history, id)=> {  //removed source as 3rd paramete
         })
         // .then(()=> console.log('source in the saveStudent thunk in store is:', source))
         // .then(()=> console.log('campusId in the saveStudent thunk in store is:', campusId))
+        .then(()=> console.log('I GOT FIRED!!!'))
         .then( ()=> {
           if(id) {  //removed source === 'dropdown'
             history.push(`/campuses/detail/${id}`); 
@@ -162,6 +163,7 @@ const deleteCampus = (campus, history)=> {
         campus
       })
     )
+    .then(()=> console.log('history in deleteCampus is:', history))
     .then( ()=> {
       history.push('/campuses');
     })
@@ -176,6 +178,7 @@ const deleteStudent = (student, history)=> {
         student
       })
     )
+    .then(()=> console.log('history in deleteStudent is:', history))
     .then( ()=> {
       history.push('/students');
     })

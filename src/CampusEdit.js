@@ -11,7 +11,7 @@ class CampusEdit extends Component {
       name: this.props.campus ? this.props.campus.name : '',
       image: this.props.campus ? this.props.campus.image : '',
       description: this.props.campus ? this.props.campus.description : '',
-      motto: this.props.motto ? this.props.campus.motto : '',
+      motto: this.props.campus ? this.props.campus.motto : '',
       errors: {}
     }
     this.onSave = this.onSave.bind(this);
@@ -103,7 +103,7 @@ class CampusEdit extends Component {
         <h4>Update information for <b>{ campus.name }</b></h4>
           <div className='row'> 
             <div className='col'>
-              <img src={campus.image} width={200}/>
+              <img src={campus.image} width={400}/>
             </div>
             <div className='col'>       
               <form onSubmit={ onSave }>
@@ -127,8 +127,9 @@ class CampusEdit extends Component {
                     errors.motto
                   }
                 </p>
-                <button><p>Update</p></button>    
+                <button><p>Update</p></button>               
               </form>
+              <button onClick={ onDelete }><p>Delete</p></button> 
             </div>
           </div>   
         
@@ -149,7 +150,7 @@ class CampusEdit extends Component {
               })
             }         
         </ul>
-        <button onClick={ onDelete }><p>Delete Campus</p></button>  
+         
       </div>
     )
   }

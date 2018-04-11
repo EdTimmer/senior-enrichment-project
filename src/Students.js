@@ -13,7 +13,7 @@ const Students = ({students, campuses})=> {
         </div>             
         <div className='col'>
           <button>
-            <Link to={'/students/create'}>Add Student</Link>
+            <Link to={'/students/create'}>Add</Link>
           </button>  
         </div>
       </div>      

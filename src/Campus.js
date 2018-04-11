@@ -56,7 +56,10 @@ class Campus extends Component {
             
             <p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p>
             <p>{campus.description}</p>    
-            <p>Our Motto: <b><i>{campus.motto}</i></b></p>        
+            <p>Our Motto: <b><i>{campus.motto}</i></b></p>
+            <button>
+              <Link to={`/campuses/edit/${campus.id}`}>Edit</Link>
+            </button>        
           </div>
         </div>
         {/*
@@ -85,9 +88,7 @@ class Campus extends Component {
         </ul>
        {studentsOfThisCampus.length === 0 ? (<p>There are no students currently enrolled in {campus.name}</p>) : (<p></p>)}
 
-        <button>
-          <Link to={`/campuses/edit/${campus.id}`}>Edit</Link>
-        </button>
+
       </div>
     )
   }

@@ -33,7 +33,7 @@ class CampusSelectStudent extends Component {
       <div>
         <form onSubmit={ this.onSelectStudent }>
           <select value={ id } onChange={ onChange }>
-            <option value='-1'><p>Select Student</p></option>     
+            <option value='-1'>Select Student</option>     
             {
               notEnrolledStudents.map( student => {
                 return (

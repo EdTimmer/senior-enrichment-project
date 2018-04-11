@@ -36,7 +36,7 @@ class CampusCreate extends Component {
       },
       motto: (value)=> {
         if(!value) {
-          return 'Our motto:  Motto is required!';
+          return 'Our motto is:  Motto is required!';
         }
       },
     }
@@ -93,7 +93,7 @@ class CampusCreate extends Component {
             }
           </p>
 
-          <button type='button1'><p>Add Campus</p></button>
+          <button><p>Add</p></button>
         </form>
       </div>
     )

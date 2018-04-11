@@ -148,8 +148,10 @@ class StudentEdit extends Component {
                   errors.email
                 }
               </p>
-              <button><p>Update Student</p></button>     
+              <button><p>Update</p></button>   
+                
             </form>
+            <button onClick={ onDelete }>Delete</button> 
           </div>
         </div>
         
@@ -163,7 +165,7 @@ class StudentEdit extends Component {
 
         <form onSubmit={ this.onSelectCampus }>
           <select value={ campusId } name='campusId' onChange={ onChange }>
-          <option value='-1'><p>Select Campus</p></option>     
+          <option value='-1'>Select Campus</option>     
           {
             availableCampuses.map( campus => {
               return (
@@ -182,7 +184,7 @@ class StudentEdit extends Component {
           TESTING:
         <StudentSelectCampus id={id}/>
         */}
-        <button onClick={ onDelete }><p>Delete Student</p></button> 
+        
       </div>
     )
   }
