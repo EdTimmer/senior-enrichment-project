@@ -29,9 +29,9 @@ const Student = conn.define('student', {
       type: Sequelize.STRING,
       unique: false,
       allowNull: true,
-      validate: {
-        isURL: true
-      }
+      // validate: {
+      //   isURL: true
+      // }
     }, 
 }, {
   getterMethods: {

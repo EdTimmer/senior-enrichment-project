@@ -27,8 +27,8 @@ class StudentCreate extends Component {
         }
       },
       GPA: (value)=> {
-        if (!value || value > 4.000) {
-          return 'GPA is required and it cannot be higer than 4.000';
+        if (!value || value > 4.0 || value <= 0) {
+          return 'GPA of above 0.0 and not greater than 4.0 is required';
         }
       },
       email: (value)=> {
@@ -37,9 +37,15 @@ class StudentCreate extends Component {
         }
       },
       image: (value)=> {
-        if(!value) {
-          return 'Image URL is required';
+        // if(!value) {
+        //   return 'Image URL is required';
+        // }
+      
+        const regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (!regexp.test(value)) {
+          return 'Please enter a valid image URL';
         }
+        
       },
     }
   }
@@ -97,7 +103,7 @@ class StudentCreate extends Component {
               errors.email
             }
           </p>
-          <button>Add Student</button>
+          <button><p>Add Student</p></button>
         </form>
       </div>
     )

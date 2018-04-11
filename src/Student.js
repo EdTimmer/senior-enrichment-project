@@ -18,7 +18,7 @@ class Student extends Component {
 
     return (
       <div className='container'>
-        <h2>{ student.fullName }</h2>
+        <h3>{ student.fullName }</h3>
         <div className='row'>
           <div className='col'>
             <img src={student.image} width={400}/>

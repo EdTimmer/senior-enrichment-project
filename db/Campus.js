@@ -11,19 +11,19 @@ const Campus = conn.define('campus', {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false,
-    validate: {
-      isURL: true
-    }
+    // validate: {
+    //   isURL: true
+    // }
   },
   description: {
     type: Sequelize.TEXT,
     unique: false,
     allowNull: true
   },
-  link: {
+  motto: {
     type: Sequelize.STRING,
     unique: false,
-    allowNull: true
+    alloNull: false
   }
 });
 

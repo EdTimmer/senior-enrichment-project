@@ -47,7 +47,7 @@ class Campus extends Component {
     const studentsOfThisCampus = students.filter( student => student.campusId === id)
     return (
       <div className='container'>
-        <h2>{ campus.name }</h2>
+        <h3>{ campus.name }</h3>
         <div className='row'>
           <div className='col'>
             <img src={campus.image} height={300}/>
@@ -55,10 +55,8 @@ class Campus extends Component {
           <div className='col'>
             
             <p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p>
-            <p>{campus.description}</p>
-            {!!campus.link ? (
-            <p><Link to={campus.link}><i>Would you like to know more?</i></Link></p>
-            ) : (<br />)}
+            <p>{campus.description}</p>    
+            <p>Our Motto: <b><i>{campus.motto}</i></b></p>        
           </div>
         </div>
         {/*
@@ -87,7 +85,7 @@ class Campus extends Component {
         </ul>
        {studentsOfThisCampus.length === 0 ? (<p>There are no students currently enrolled in {campus.name}</p>) : (<p></p>)}
 
-      <button>
+        <button>
           <Link to={`/campuses/edit/${campus.id}`}>Edit</Link>
         </button>
       </div>

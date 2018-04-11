@@ -6,7 +6,7 @@ const Students = ({students, campuses})=> {
   if (students.length > 0) {
     return (
       <div>
-        <h2>All Students</h2>
+        <h3>All Students</h3>
         <div className='row'>
         <div className='col'>
           <p><i>Number of all students:</i> <strong>{students.length}</strong></p> 

@@ -33,7 +33,7 @@ class CampusSelectStudent extends Component {
       <div>
         <form onSubmit={ this.onSelectStudent }>
           <select value={ id } onChange={ onChange }>
-            <option value='-1'>Select Student</option>     
+            <option value='-1'><p>Select Student</p></option>     
             {
               notEnrolledStudents.map( student => {
                 return (
@@ -45,7 +45,7 @@ class CampusSelectStudent extends Component {
             }
           </select>
           <button disabled={ id*1 === -1}>
-          Assign
+          <p>Enroll</p>
           </button>
         </form>        
       </div>

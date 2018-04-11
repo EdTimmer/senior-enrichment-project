@@ -11,6 +11,7 @@ class CampusEdit extends Component {
       name: this.props.campus ? this.props.campus.name : '',
       image: this.props.campus ? this.props.campus.image : '',
       description: this.props.campus ? this.props.campus.description : '',
+      motto: this.props.motto ? this.props.campus.motto : '',
       errors: {}
     }
     this.onSave = this.onSave.bind(this);
@@ -23,13 +24,22 @@ class CampusEdit extends Component {
         }
       },
       image: (value)=> {
-        if(!value) {
-          return 'Image URL is required';
+        // if(!value) {
+        //   return 'Image URL is required';
+        // }
+        const regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (!regexp.test(value)) {
+          return 'Please enter a valid image URL';
         }
       },
       description: (value)=> {
         if(!value) {
           return 'Campus description is required';
+        }
+      },
+      motto: (value)=> {
+        if(!value) {
+          return 'Our motto:  Motto is required!';
         }
       },
     }
@@ -42,7 +52,8 @@ class CampusEdit extends Component {
       this.setState({
         name: nextProps.campus.name,
         image: nextProps.campus.image,
-        description: nextProps.campus.description
+        description: nextProps.campus.description,
+        motto: nextProps.campus.motto
       })
     }
   }
@@ -61,7 +72,7 @@ class CampusEdit extends Component {
     if (Object.keys(errors).length) {
       return;  
     }
-    const campus = { id: this.props.id, name: this.state.name, image: this.state.image, description: this.state.description };
+    const campus = { id: this.props.id, name: this.state.name, image: this.state.image, description: this.state.description, motto: this.state.motto };
     this.props.saveCampus(campus);
   }
   onChangeInfo(ev) {
@@ -80,7 +91,7 @@ class CampusEdit extends Component {
   // }
   render() {
     const { campus, students, id } = this.props; 
-    const { name, image, description, errors } = this.state;
+    const { name, image, description, motto, errors } = this.state;
     const { onChangeInfo, onSave, onDelete } = this;  //removed onSelectStudent and onChange
     if(!campus) {
       return null;
@@ -89,29 +100,38 @@ class CampusEdit extends Component {
 
     return (
       <div>
-        <h2>{ campus.name }</h2>
-        <p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p>
-        <img src={campus.image} width={200}/>
-        <p>{campus.description}</p>
+        <h4>Update information for <b>{ campus.name }</b></h4>
+          <div className='row'> 
+            <div className='col'>
+              <img src={campus.image} width={200}/>
+            </div>
+            <div className='col'>       
+              <form onSubmit={ onSave }>
+                <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/>
+                  {
+                    errors.name
+                  }
+                </p>
+                <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/>
+                  {
+                    errors.image
+                  }
+                </p>
+                <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/>
+                  {
+                    errors.description
+                  }
+                </p>
+                <p>Motto: <input value={ motto } name='motto' onChange={ onChangeInfo }/>
+                  {
+                    errors.motto
+                  }
+                </p>
+                <button><p>Update</p></button>    
+              </form>
+            </div>
+          </div>   
         
-        <form onSubmit={ onSave }>
-          <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/>
-            {
-              errors.name
-            }
-          </p>
-          <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/>
-            {
-              errors.image
-            }
-          </p>
-          <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/>
-            {
-              errors.description
-            }
-          </p>
-          <button>Update</button>     
-        </form>
         
         {/*<button disabled={ name.length === 0 }>Update</button> */}
 
@@ -129,7 +149,7 @@ class CampusEdit extends Component {
               })
             }         
         </ul>
-        <button onClick={ onDelete }>Delete Campus</button>  
+        <button onClick={ onDelete }><p>Delete Campus</p></button>  
       </div>
     )
   }

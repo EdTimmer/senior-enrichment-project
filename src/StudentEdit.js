@@ -33,8 +33,8 @@ class StudentEdit extends Component {
         }
       },
       GPA: (value)=> {
-        if (!value || value > 4.000) {
-          return 'GPA is required and it cannot be higer than 4.000';
+        if (!value || value > 4.0 || value <= 0) {
+          return 'GPA of above 0.0 and not greater than 4.0 is required';
         }
       },
       email: (value)=> {
@@ -43,8 +43,12 @@ class StudentEdit extends Component {
         }
       },
       image: (value)=> {
-        if(!value) {
-          return 'Image URL is required';
+        // if(!value) {
+        //   return 'Image URL is required';
+        // }
+        const regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (!regexp.test(value)) {
+          return 'Please enter a valid image URL';
         }
       },
     }
@@ -113,35 +117,43 @@ class StudentEdit extends Component {
     return (
       <div>      
         <p>Update Information for <b>{student.fullName}</b>:</p>
-        <img src={student.image}/>
-        <form onSubmit={ onSave }>
-          <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeEntry }/>
-            {
-            errors.firstName
-            }
-          </p>
-          <p>Last Name: <input value={ lastName } name='lastName' onChange={ onChangeEntry }/>
-            {
-            errors.lastName
-            }
-          </p>
-          <p>Image URL: <input value={ image } name='image' onChange={ onChangeEntry }/>
-            {
-              errors.image
-            }
-          </p>
-          <p>GPA: <input value={ GPA } name='GPA' onChange={ onChangeEntry }/>
-            {
-              errors.GPA
-            }
-          </p>
-          <p>Email: <input value={ email } name='email' onChange={ onChangeEntry }/>
-            {
-              errors.email
-            }
-          </p>
-          <button>Update Student</button>     
-        </form>
+        <div className='row'>
+          <div className='col'>
+            <img src={student.image} width={400}/>
+          </div>
+          <div className='col'>
+            <form onSubmit={ onSave }>
+              <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeEntry }/>
+                {
+                errors.firstName
+                }
+              </p>
+              <p>Last Name: <input value={ lastName } name='lastName' onChange={ onChangeEntry }/>
+                {
+                errors.lastName
+                }
+              </p>
+              <p>Image URL: <input value={ image } name='image' onChange={ onChangeEntry }/>
+                {
+                  errors.image
+                }
+              </p>
+              <p>GPA: <input value={ GPA } name='GPA' onChange={ onChangeEntry }/>
+                {
+                  errors.GPA
+                }
+              </p>
+              <p>Email: <input value={ email } name='email' onChange={ onChangeEntry }/>
+                {
+                  errors.email
+                }
+              </p>
+              <button><p>Update Student</p></button>     
+            </form>
+          </div>
+        </div>
+        
+
 
         {/* <button disabled={ firstName.length === 0 || lastName.length === 0 || email.length === 0 || GPA*1 > 4}>Update Student</button>*/}
 
@@ -151,7 +163,7 @@ class StudentEdit extends Component {
 
         <form onSubmit={ this.onSelectCampus }>
           <select value={ campusId } name='campusId' onChange={ onChange }>
-          <option value='-1'>Select Campus</option>     
+          <option value='-1'><p>Select Campus</p></option>     
           {
             availableCampuses.map( campus => {
               return (
@@ -163,14 +175,14 @@ class StudentEdit extends Component {
           }
           </select>
           <button disabled={ campusId*1 === -1}>
-          Assign
+          <p>Enroll</p>
           </button>
         </form>          
         {/* 
           TESTING:
         <StudentSelectCampus id={id}/>
         */}
-        <button onClick={ onDelete }>Delete Student</button> 
+        <button onClick={ onDelete }><p>Delete Student</p></button> 
       </div>
     )
   }
