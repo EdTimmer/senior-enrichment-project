@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { loadCampuses, loadStudents, saveCampus, saveStudent, deleteCampus, deleteStudent } from './store';
 import { loadCampuses, loadStudents } from './store';
 import { connect } from 'react-redux';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import Nav from './Nav';
 import Campuses from './Campuses';
 import Students from './Students';
@@ -24,7 +24,7 @@ class App extends Component {
       <Router>
         <div>
           <Route render={({location})=> <Nav path={location.pathname} /> } />
-          <Switch>
+          {/*<Switch>*/}
             <Route path='/' exact component={ Home } />
             <Route path='/campuses' exact component={ Campuses } />
             <Route path='/students' exact component={ Students } />
@@ -34,7 +34,7 @@ class App extends Component {
             <Route path='/campuses/edit/:id' exact render={({match, history})=> <CampusEdit id={ match.params.id * 1 } history={ history }/>}/>
             <Route path='/students/detail/:id' exact render={({match, history})=> <Student id={ match.params.id * 1 } history={ history }/>}/>
             <Route path='/students/edit/:id' exact render={({match, history})=> <StudentEdit id={ match.params.id * 1 } history={ history }/>}/>
-          </Switch>
+          {/*</Switch>*/}
         </div>
       </Router>
     )

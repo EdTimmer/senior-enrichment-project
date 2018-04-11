@@ -1,0 +1,11 @@
+p.thick {
+  font-weight: bold;
+}
+
+body {
+  /* background-image: url("underwater.jpg"); */
+  background-image: url('./img/water.jpeg');
+  /* width: 500px */
+  background-repeat: no-repeat;
+  background-size: 100%;
+} 

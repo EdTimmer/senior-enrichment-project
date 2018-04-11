@@ -9,7 +9,7 @@ const { Campus, Student } = db.models;
 app.use(require('body-parser').json());
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
 app.use('/vendor', express.static(path.join(__dirname, 'img')));
-app.use('/vendor', express.static(path.join(__dirname, 'style.css')));
+app.use('/vendor', express.static(path.join(__dirname, 'public')));
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 

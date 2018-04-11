@@ -50,10 +50,10 @@ class CampusCreate extends Component {
       return;  
     }
     const campus = { name: this.state.name, image: this.state.image, description: this.state.description };
-    this.props.saveCampus(campus)
-      .catch((err)=> {
-        alert('Image URL has to be a valid image URL address');
-      })
+    this.props.saveCampus(campus);
+      // .catch((err)=> {
+      //   alert('Image URL has to be a valid image URL address');
+      // })
   }
   render() {
     const { name, image, description, errors } = this.state;

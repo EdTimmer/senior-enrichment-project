@@ -19,6 +19,11 @@ const Campus = conn.define('campus', {
     type: Sequelize.TEXT,
     unique: false,
     allowNull: true
+  },
+  link: {
+    type: Sequelize.STRING,
+    unique: false,
+    allowNull: true
   }
 });
 

@@ -56,6 +56,9 @@ class Campus extends Component {
             
             <p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p>
             <p>{campus.description}</p>
+            {!!campus.link ? (
+            <p><Link to={campus.link}><i>Would you like to know more?</i></Link></p>
+            ) : (<br />)}
           </div>
         </div>
         {/*
@@ -75,12 +78,14 @@ class Campus extends Component {
               studentsOfThisCampus.map(student => {
                 return (
                   <li key={student.id}>
+                    <img src={student.image} height={50} />
                     <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
                   </li>
                 )
               })
             }         
         </ul>
+       {studentsOfThisCampus.length === 0 ? (<p>There are no students currently enrolled in {campus.name}</p>) : (<p></p>)}
 
       <button>
           <Link to={`/campuses/edit/${campus.id}`}>Edit</Link>

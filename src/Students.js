@@ -28,8 +28,8 @@ const Students = ({students, campuses})=> {
           </Link> : 'none'
     
               return (
-                <div>
-                  <li key={student.id} className='list-group-item list-group-item-success' className='row'>
+                <div key={student.id}>
+                  <li className='list-group-item list-group-item-success' className='row'>
                     <div className='col'>
                       <img src={student.image} width={100} />
                     </div>

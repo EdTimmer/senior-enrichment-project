@@ -112,7 +112,8 @@ class StudentEdit extends Component {
     
     return (
       <div>      
-        <p>Update Information for {student.fullName}:</p>
+        <p>Update Information for <b>{student.fullName}</b>:</p>
+        <img src={student.image}/>
         <form onSubmit={ onSave }>
           <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeEntry }/>
             {
