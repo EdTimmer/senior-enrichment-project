@@ -21,7 +21,8 @@ const Campuses = ({campuses, students})=> {
           {
             campuses.map(campus => {
               return (
-                <div key={campus.id}>
+                <div key={campus.id} className='container'>
+                
                   <div className='row'>
                     <div className='col'>
                       <img src={campus.image} height={100} />
@@ -31,8 +32,13 @@ const Campuses = ({campuses, students})=> {
                       <p><i>Number of students:</i> {students.filter( student => student.campusId === campus.id).length}</p>
                     
                     </div> 
+                    <div className='col'>
+                    </div> 
+                    <div className='col'>
+                    </div>
                                  
                   </div>
+                  
                 
                 </div>
               )

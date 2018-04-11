@@ -44,9 +44,7 @@ class CampusSelectStudent extends Component {
               })
             }
           </select>
-          <button disabled={ id*1 === -1}>
-          <p>Enroll</p>
-          </button>
+          <button disabled={ id*1 === -1}>Enroll</button>
         </form>        
       </div>
     )

@@ -148,7 +148,7 @@ class StudentEdit extends Component {
                   errors.email
                 }
               </p>
-              <button><p>Update</p></button>   
+              <button>Update</button>   
                 
             </form>
             <button onClick={ onDelete }>Delete</button> 
@@ -161,7 +161,7 @@ class StudentEdit extends Component {
 
          
 
-        <p>{student.fullName} is currently enrolled in: {campusOfThisStudent.name}</p>
+        <p>{student.fullName} is currently enrolled in: <Link to={`/campuses/detail/${campusOfThisStudent.id}`}>{campusOfThisStudent.name}</Link></p>
 
         <form onSubmit={ this.onSelectCampus }>
           <select value={ campusId } name='campusId' onChange={ onChange }>
@@ -176,9 +176,7 @@ class StudentEdit extends Component {
             })
           }
           </select>
-          <button disabled={ campusId*1 === -1}>
-          <p>Enroll</p>
-          </button>
+          <button disabled={ campusId*1 === -1}>Enroll</button>
         </form>          
         {/* 
           TESTING:

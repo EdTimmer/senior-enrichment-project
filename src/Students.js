@@ -36,7 +36,11 @@ const Students = ({students, campuses})=> {
                     <div className='col'>
                       <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>                  
                       <p><i>Enrolled in:</i> {campusName}</p>
-                    </div>                                
+                    </div>        
+                    <div className='col'>
+                    </div>
+
+                                           
                   </li>  
                   
                 </div>

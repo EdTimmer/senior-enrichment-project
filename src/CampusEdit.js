@@ -60,11 +60,11 @@ class CampusEdit extends Component {
   onSave(ev) {
     ev.preventDefault();
     const errors = Object.keys(this.validators).reduce((memo, key)=> {
-      const validator = this.validators[key];
-      const value = this.state[key];
-      const error = validator(value);
-      if(error) {
-        memo[key] = error;
+      const validator = this.validators[key];//gives a key of a validator function
+      const value = this.state[key]; //gives a value of a key in the state
+      const error = validator(value); //runs the validator function on the value in the state, looking for an error
+      if(error) {             //if an error is found
+        memo[key] = error;    //accumulator will have a key of validator function with a result of the validator function as value
       }
       return memo;
     }, {});
@@ -127,9 +127,9 @@ class CampusEdit extends Component {
                     errors.motto
                   }
                 </p>
-                <button><p>Update</p></button>               
+                <button>Update</button>               
               </form>
-              <button onClick={ onDelete }><p>Delete</p></button> 
+              <button onClick={ onDelete }>Delete</button> 
             </div>
           </div>   
         
@@ -143,9 +143,10 @@ class CampusEdit extends Component {
             {
               studentsOfThisCampus.map(student => {
                 return (
-                  <li key={student.id}>
-                    <Link to={`/students/${student.id}`}>{student.fullName}</Link>
-                  </li>
+                  <div key={student.id}>
+                    <img src={student.image} height={50} />
+                    <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
+                  </div>
                 )
               })
             }         

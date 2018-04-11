@@ -1,7 +1,8 @@
 
 a {
-  color: yellow;
+  color: white;
   font-weight: bold;
+  text-decoration: underline;
 }
 h2 {
   color: white;
@@ -26,34 +27,39 @@ button {
   color: black;
   border: 2px solid #4CAF50;  */
   margin: 20px;
-  border: 1px solid #111;
+  /* border: 1px solid rgb(177, 11, 121); */
   border-radius: 5px;
   background: transparent;
   width: 70px;
   padding: 5px 5px 5px 5px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  font-weight: bold;
+  border: 2px solid yellow;
   height: 34px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  color: white
+  
 }
 select {
   margin: 20px;
-  border: 1px solid #111;  
+  /* border: 1px solid rgb(177, 11, 121);   */
   border-radius: 5px;
   background: transparent;
   width: 150px;
   padding: 5px 5px 5px 5px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 2px solid yellow;
   height: 34px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  font-weight: bold;
+  color: white;
   /* appearance: none; */
   /* background: url(http://www.stackoverflow.com/favicon.ico) 96% / 15% no-repeat #eee; */
 }
 input {
-  border: 1px solid rgb(177, 11, 121);  
+  border: 1px solid black;  
   border-radius: 5px;
   padding: 5px 5px 5px 5px;
   margin: 0, 15px, 0, 5px;
@@ -69,10 +75,13 @@ img {
   font-weight: bold;
 } */
 
+/* .col-md-6 { width: 45%; float: left; text-align : center; margin: 0 10px; overflow: hidden;} */
+
 body {
-  /* background-image: url("underwater.jpg"); */
   background-image: url('./img/water.jpeg');
   /* width: 500px */
+  /* background-image: url('./img/maxresdefault.jpg'); */
+  /* background-image: url('./img/jellyfish_underwater_jelly_109543_1920x1080.jpg'); */
   background-repeat: repeat;
   background-size: 100%;
 } 

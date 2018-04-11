@@ -104,7 +104,7 @@ class StudentCreate extends Component {
               errors.email
             }
           </p>
-          <button><p>Add</p></button>
+          <button>Add</button>
         </form>
       </div>
     )
