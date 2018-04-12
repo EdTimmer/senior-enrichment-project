@@ -110,7 +110,7 @@ class StudentEdit extends Component {
     let campusOfThisStudent = campuses.find(campus=> campus.id === student.campusId); 
     if (!campusOfThisStudent) {
       campusOfThisStudent = {};
-      campusOfThisStudent.name = 'none of the campuses';
+      campusOfThisStudent.name = 'none';
     } 
     const availableCampuses = campuses.filter(campus => campus.id !== student.campusId);
     
@@ -118,7 +118,7 @@ class StudentEdit extends Component {
       <div>
         <div className='row'>
           <div className='col'>
-            <p>Update Information for <b>{student.fullName}</b>:</p>
+            <h4>Update Information for <b>{student.fullName}</b>:</h4>
           </div>
           <div className='col'>
             <button onClick={ onDelete }>Delete</button> 
@@ -132,7 +132,7 @@ class StudentEdit extends Component {
           <div className='col'>
             <img src={student.image} width={400}/>
           </div>
-          <div className='col'>
+          <div className='col float-right'>   {/*consider removing or fixing float-right*/}
             <form onSubmit={ onSave }>
               <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeEntry }/>
                 {
@@ -166,11 +166,16 @@ class StudentEdit extends Component {
         </div>
                  
 
-        <p>{student.fullName} is currently enrolled in: <Link to={`/campuses/detail/${campusOfThisStudent.id}`}>{campusOfThisStudent.name}</Link></p>
+        
+        {/*{const answerName = !!campusOfThisStudent ? (<Link to={`/campuses/detail/${campusOfThisStudent.id}`}>{campusOfThisStudent.name}</Link>) : (<p>none</p>)
+        {/*<Link to={`/campuses/detail/${campusOfThisStudent.id}`}>{campusOfThisStudent.name}</Link></p>*/}
+        {/*<p>{student.fullName} is currently enrolled in: </p>*/}
+        
 
         <form onSubmit={ this.onSelectCampus }>
+        <p>Current campus: {campusOfThisStudent.name}</p>
           <select value={ campusId } name='campusId' onChange={ onChange }>
-          <option value='-1'>Select Campus</option>     
+          <option value='-1'>Select New Campus</option>     
           {
             availableCampuses.map( campus => {
               return (
