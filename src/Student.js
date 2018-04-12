@@ -14,8 +14,8 @@ const Student = ({ student, campuses, id, campusOfThisStudent })=>{
         <img src={student.image} width={400}/>
       </div>
       <div className='col'>
-        <h5>GPA:  { student.GPA }</h5>
-        <h5>Email:  { student.email }</h5>       
+        <h5><b>GPA:  { student.GPA }</b></h5>
+        <h5><b>Email:  { student.email }</b></h5>       
         {!!campusOfThisStudent ? (
           <p><i>{student.fullName} is enrolled in <Link to={`/campuses/detail/${campusOfThisStudent.id}`}>{campusOfThisStudent.name}</Link></i></p>
         ) : (<p><i>{student.fullName} is not yet enrolled in any campus</i></p>)}

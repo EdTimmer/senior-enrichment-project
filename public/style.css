@@ -1,6 +1,6 @@
 
 a {
-  color: whitesmoke;
+  color: white;
   font-weight: bold;
   text-decoration: underline;
   /* text-shadow:
@@ -34,7 +34,7 @@ h5 {
   color: white;
 }
 p {
-  color: whitesmoke;
+  color: white;
   font-weight: bold;
   /* text-shadow:
   -1px -1px 0 gray,
@@ -49,7 +49,7 @@ button {
   margin: 20px;
   /* border: 1px solid rgb(177, 11, 121); */
   border-radius: 5px;
-  background: transparent;
+  background: rgb(18, 191, 221);
   width: 70px;
   padding: 5px 5px 5px 5px;
   font-size: 16px;
@@ -65,11 +65,19 @@ button {
   -1px 1px 0 grey,
   1px 1px 0 grey;   */
 }
+
+.navbutton {
+  width: 150px;
+  border: none;
+  background: rgb(18, 191, 221);
+  padding: 3px 3px 3px 3px;
+  height: 25px;
+}
 select {
   margin: 20px;
   /* border: 1px solid rgb(177, 11, 121);   */
   border-radius: 5px;
-  background: lightseagreen;
+  background: rgb(18, 191, 221);
   width: 170px;
   padding: 5px 1px 5px 5px;
   font-size: 16px;
