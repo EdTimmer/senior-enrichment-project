@@ -9,7 +9,7 @@ const Students = ({students, campuses})=> {
         <h3>All Students</h3>
         <div className='row'>
         <div className='col'>
-          <p><i>Number of all students:</i> <strong>{students.length}</strong></p> 
+          <p><i>Number of students:</i> <strong>{students.length}</strong></p> 
         </div>             
         <div className='col'>
           <button>

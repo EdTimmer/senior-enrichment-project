@@ -112,7 +112,7 @@ const saveCampus = (campus, history)=> {
   }
 }
 
-const saveStudent = (student, history, id)=> {  //removed source as 3rd parameter
+const saveStudent = (student, history, id)=> {  
   let _student;
   if(student.id) {
     return (dispatch)=> {
@@ -125,11 +125,8 @@ const saveStudent = (student, history, id)=> {  //removed source as 3rd paramete
             student
           })
         })
-        // .then(()=> console.log('source in the saveStudent thunk in store is:', source))
-        // .then(()=> console.log('campusId in the saveStudent thunk in store is:', campusId))
-        .then(()=> console.log('I GOT FIRED!!!'))
         .then( ()=> {
-          if(id) {  //removed source === 'dropdown'
+          if(id) {  
             history.push(`/campuses/detail/${id}`); 
           }
           else {
