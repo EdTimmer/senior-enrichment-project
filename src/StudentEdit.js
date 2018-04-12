@@ -164,6 +164,7 @@ class StudentEdit extends Component {
             </form>
             
         </div>
+        <br />
                  
 
         
@@ -171,7 +172,7 @@ class StudentEdit extends Component {
         {/*<Link to={`/campuses/detail/${campusOfThisStudent.id}`}>{campusOfThisStudent.name}</Link></p>*/}
         {/*<p>{student.fullName} is currently enrolled in: </p>*/}
         
-
+    
         <form onSubmit={ this.onSelectCampus }>
         <p>Current campus: {campusOfThisStudent.name}</p>
           <select value={ campusId } name='campusId' onChange={ onChange }>
