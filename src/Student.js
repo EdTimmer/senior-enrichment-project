@@ -20,9 +20,9 @@ const Student = ({ student, campuses, id, campusOfThisStudent })=>{
           <p><i>{student.fullName} is enrolled in <Link to={`/campuses/detail/${campusOfThisStudent.id}`}>{campusOfThisStudent.name}</Link></i></p>
         ) : (<p><i>{student.fullName} is not yet enrolled in any campus</i></p>)}
 
-        <button>
-          <Link to={`/students/edit/${student.id}`}>Edit</Link>
-        </button>
+        
+      <Link to={`/students/edit/${student.id}`}><button>Edit</button></Link>
+        
       </div>
     </div>
   </div>

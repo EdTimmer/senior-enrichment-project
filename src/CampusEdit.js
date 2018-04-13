@@ -78,7 +78,7 @@ class CampusEdit extends Component {
   render() {
     const { campus, students, id } = this.props; 
     const { name, image, description, motto, errors } = this.state;
-    const { onChangeInfo, onSave, onDelete } = this;  //removed onSelectStudent and onChange
+    const { onChangeInfo, onSave, onDelete } = this; 
     if(!campus) {
       return null;
     }
@@ -90,7 +90,7 @@ class CampusEdit extends Component {
           <div className='col'>
             <h4>Update information for <b>{ campus.name }</b></h4>
           </div>
-          <div className='col'>      
+          <div className='col text-right'>      
             <button onClick={ onDelete }>Delete</button> 
           </div>  
         </div> 
@@ -98,7 +98,7 @@ class CampusEdit extends Component {
             <div className='col'>
               <img src={campus.image} width={400}/>
             </div>
-            <div className='col'>       
+            <div className='col text-right'>       
               <form onSubmit={ onSave }>
                 <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/>
                   {

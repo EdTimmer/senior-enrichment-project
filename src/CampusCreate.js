@@ -66,22 +66,22 @@ class CampusCreate extends Component {
       <div>
         <h3>Add A New Campus</h3>
         <form onSubmit={ onSave }>
-          <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/>
+          <p>Name:<br /> <input value={ name } name='name' onChange={ onChangeInfo }/>
             {
               errors.name
             }
           </p>
-          <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/>
+          <p>Image URL:<br /> <input value={ image } name='image' onChange={ onChangeInfo }/>
             {
               errors.image
             }
           </p>
-          <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/>
+          <p>Description:<br /> <input value={ description } name='description' onChange={ onChangeInfo }/>
             {
               errors.description
             }
           </p>
-          <p>Motto: <input value={ motto } name='motto' onChange={ onChangeInfo }/>
+          <p>Motto:<br /> <input value={ motto } name='motto' onChange={ onChangeInfo }/>
             {
               errors.motto
             }

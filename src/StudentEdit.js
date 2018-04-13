@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteStudent, saveStudent } from './store';
-import { Link } from 'react-router-dom';
 
 class StudentEdit extends Component {
   constructor(props) {
@@ -115,7 +114,7 @@ class StudentEdit extends Component {
           <div className='col'>
             <h4>Update Information for <b>{student.fullName}</b>:</h4>
           </div>
-          <div className='col'>
+          <div className='col text-right'>
             <button onClick={ onDelete }>Delete</button> 
           </div>
         </div>
@@ -124,7 +123,7 @@ class StudentEdit extends Component {
           <div className='col'>
             <img src={student.image} width={400}/>
           </div>
-          <div className='col float-right'>   {/*consider removing or fixing float-right*/}
+          <div className='col text-right'>   
             <form onSubmit={ onSave }>
               <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeEntry }/>
                 {

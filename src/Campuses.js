@@ -11,10 +11,8 @@ const Campuses = ({campuses, students})=> {
           <div className='col'>
             <p><i>Number of Campuses:</i> <strong>{campuses.length}</strong></p> 
           </div>             
-          <div className='col'>
-            <button>
-              <Link to={'/campuses/create'}>Add</Link>
-            </button>  
+          <div className='col'>            
+            <Link to={'/campuses/create'}><button>Add</button></Link>              
           </div>
         </div>  
         <ul>

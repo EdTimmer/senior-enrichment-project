@@ -8,13 +8,11 @@ const Students = ({students, campuses})=> {
       <div>
         <h3>All Students</h3>
         <div className='row'>
-        <div className='col'>
-          <p><i>Number of students:</i> <strong>{students.length}</strong></p> 
-        </div>             
-        <div className='col'>
-          <button>
-            <Link to={'/students/create'}>Add</Link>
-          </button>  
+          <div className='col'>
+            <p><i>Number of students:</i> <strong>{students.length}</strong></p> 
+          </div>             
+          <div className='col'>            
+            <Link to={'/students/create'}><button>Add</button></Link>              
         </div>
       </div>
         <ul className='list-group'>
@@ -26,8 +24,8 @@ const Students = ({students, campuses})=> {
     
               return (
                 <div key={student.id}>
-                  <li className='list-group-item list-group-item-success' className='row'>
-                    <div className='col'>
+                  <li className='row'>
+                    <div className='col text-right'>
                       <img src={student.image} width={100} />
                     </div>
                     <div className='col'>
@@ -37,7 +35,8 @@ const Students = ({students, campuses})=> {
                     <div className='col'>
                     </div>                                           
                   </li>                    
-                </div>           
+                </div>
+           
               )
             })          
           }

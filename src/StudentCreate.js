@@ -72,27 +72,27 @@ class StudentCreate extends Component {
       <div>
         <h3>Add A New Student</h3>
         <form onSubmit={ onSave }>
-          <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeInfo }/>
+          <p>First Name:<br /> <input value={ firstName } name='firstName' onChange={ onChangeInfo }/>
             {
               errors.firstName
             }
           </p>
-          <p>Last Name: <input value={ lastName } name='lastName' onChange={ onChangeInfo }/>
+          <p>Last Name:<br /> <input value={ lastName } name='lastName' onChange={ onChangeInfo }/>
             {
               errors.lastName
             }
           </p> 
-          <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/>
+          <p>Image URL:<br /> <input value={ image } name='image' onChange={ onChangeInfo }/>
             {
               errors.image
             }
           </p>
-          <p>GPA: <input value={ GPA } name='GPA' onChange={ onChangeInfo }/>
+          <p>GPA:<br /> <input value={ GPA } name='GPA' onChange={ onChangeInfo }/>
             {
               errors.GPA
             }
           </p>
-          <p>Email: <input value={ email } name='email' onChange={ onChangeInfo }/>
+          <p>Email:<br /> <input value={ email } name='email' onChange={ onChangeInfo }/>
             {
               errors.email
             }

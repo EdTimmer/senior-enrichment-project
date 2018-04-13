@@ -24,10 +24,8 @@ const Campus = ({ campus, students, id, studentsOfThisCampus})=> {
             <tr>
             <td><p>Our Motto: <b><i>{campus.motto}</i></b></p></td>
             </tr>          
-            </table>
-            <button>
-              <Link to={`/campuses/edit/${campus.id}`}>Edit</Link>
-            </button>        
+            </table>            
+            <Link to={`/campuses/edit/${campus.id}`}><button>Edit</button></Link>                  
           </div>
         </div>
 
