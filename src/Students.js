@@ -12,7 +12,7 @@ const Students = ({students, campuses})=> {
             <p><i>Number of students:</i> <strong>{students.length}</strong><Link to={'/students/create'}><button>Add</button></Link> </p> 
           </div>             
         </div>
-        <ul className='list-group'>
+        <span className='container-1'>
           {
             students.map(student => {
               const campus = campuses.find(campus=> campus.id === student.campusId);
@@ -20,24 +20,18 @@ const Students = ({students, campuses})=> {
           </Link> : 'none'
     
               return (
-                <div key={student.id}>
-                  <li className='row'>
-                    <div className='col text-right'>
-                      <img src={student.image} width={150} />
-                    </div>
-                    <div className='col'>
-                      <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>                  
-                      <p><i>Enrolled in:</i> {campusName}</p>
-                    </div>        
-                    <div className='col'>
-                    </div>                                           
-                  </li>                    
-                </div>
-           
+                <div key={student.id} className='studentBox center'>
+
+                      <img src={student.image} className='studentImageSmall'/>               
+                    
+                      <p><Link to={`/students/detail/${student.id}`}>{student.fullName}</Link><br/>                 
+                      <i>Enrolled in:<br/></i>{campusName}</p>
+                    
+                </div>               
               )
             })          
           }
-        </ul>            
+        </span>            
       </div>
     ) 
   }

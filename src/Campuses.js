@@ -16,25 +16,22 @@ const Campuses = ({campuses, students})=> {
                          
           </div>
         </div>  
-        <ul>
+        <ul className='container-1'>
           {
             campuses.map(campus => {
               return (
-                <div key={campus.id} className='container'>
+                <div key={campus.id} className='studentBox center'>
                 
-                  <div className='row'>
-                    <div className='col'>
+                  <div>
+                    <div>
                       <img src={campus.image} height={200} />
                     </div>
-                    <div className='col'>
+                    <div>
                       <Link to={`/campuses/detail/${campus.id}`}>{campus.name}</Link>
                       <p><i>Number of students:</i> {students.filter( student => student.campusId === campus.id).length}</p>
                     
                     </div> 
-                    <div className='col'>
-                    </div> 
-                    <div className='col'>
-                    </div>                                 
+                              
                   </div>                
                 </div>
               )

@@ -133,7 +133,7 @@ class CampusEdit extends Component {
               studentsOfThisCampus.map(student => {
                 return (
                   <div key={student.id}>
-                    <img src={student.image} height={50} />
+                    <img src={student.image} className='studentImageSmall' />
                     <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
                   </div>
                 )

@@ -91,3 +91,33 @@ body {
   padding: 3px 3px 3px 3px;
   height: 25px;
 }
+.container-1 {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.studentBox {
+  border: none;
+  margin: 15px;
+  padding: 10px;
+}
+.center {
+  text-align: center;
+}
+.studentImageSmall {
+  width: auto;
+  max-width: 150px;
+  /* min-width: 150px; */
+  height: auto;
+  /* max-height: 100px; */
+  min-height: 100px;
+}
+.campusImageSmall {
+  width: auto;
+  max-width: 275px;
+  height: auto;
+  max-height: 200px;
+}
