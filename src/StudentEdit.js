@@ -153,9 +153,9 @@ class StudentEdit extends Component {
               <button>Update</button>   
                 
             </form>            
-        </div>
-        <br />
-                 
+        </div>      
+       </div>
+       <div>
         <form onSubmit={ this.onSelectCampus }>
         <p>Current campus: {campusOfThisStudent.name}</p>
           <select value={ campusId } name='campusId' onChange={ onChange }>
@@ -171,7 +171,7 @@ class StudentEdit extends Component {
           }
           </select>
           <button disabled={ campusId*1 === -1}>Enroll</button>
-        </form>          
+        </form>    
        </div>
     </div>      
     )
