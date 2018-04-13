@@ -47,7 +47,7 @@ button {
   color: white;
 }
 select {
-  margin: 20px;
+  margin: 20px, 0, 20px, 20px;
   border-radius: 5px;
   background: rgb(18, 191, 221);
   width: 170px;
