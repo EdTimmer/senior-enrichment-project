@@ -24,7 +24,7 @@ const Campuses = ({campuses, students})=> {
                 
                   <div className='row'>
                     <div className='col'>
-                      <img src={campus.image} height={100} />
+                      <img src={campus.image} height={200} />
                     </div>
                     <div className='col'>
                       <Link to={`/campuses/detail/${campus.id}`}>{campus.name}</Link>

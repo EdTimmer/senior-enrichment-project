@@ -23,7 +23,7 @@ const Students = ({students, campuses})=> {
                 <div key={student.id}>
                   <li className='row'>
                     <div className='col text-right'>
-                      <img src={student.image} width={100} />
+                      <img src={student.image} width={150} />
                     </div>
                     <div className='col'>
                       <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>                  
