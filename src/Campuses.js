@@ -7,12 +7,13 @@ const Campuses = ({campuses, students})=> {
     return (
       <div>
         <h3>All Campuses</h3>
-        <div className='row'>
-          <div className='col'>
-            <p><i>Number of Campuses:</i> <strong>{campuses.length}</strong></p> 
+        <div>
+          <div>
+            <p><i>Number of Campuses:</i> <strong>{campuses.length}</strong><Link to={'/campuses/create'}><button>Add</button></Link></p> 
+            
           </div>             
-          <div className='col'>            
-            <Link to={'/campuses/create'}><button>Add</button></Link>              
+          <div>            
+                         
           </div>
         </div>  
         <ul>

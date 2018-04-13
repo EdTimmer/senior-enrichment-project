@@ -7,14 +7,11 @@ const Students = ({students, campuses})=> {
     return (
       <div>
         <h3>All Students</h3>
-        <div className='row'>
-          <div className='col'>
-            <p><i>Number of students:</i> <strong>{students.length}</strong></p> 
+        <div>
+          <div>
+            <p><i>Number of students:</i> <strong>{students.length}</strong><Link to={'/students/create'}><button>Add</button></Link> </p> 
           </div>             
-          <div className='col'>            
-            <Link to={'/students/create'}><button>Add</button></Link>              
         </div>
-      </div>
         <ul className='list-group'>
           {
             students.map(student => {
