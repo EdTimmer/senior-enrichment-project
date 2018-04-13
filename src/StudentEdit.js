@@ -88,7 +88,7 @@ class StudentEdit extends Component {
   onSelectCampus(ev) {
     ev.preventDefault();
     const campus = this.props.campuses.find( campus => campus.id === this.state.id*1 );
-    const student = {id: this.props.id, firstName: this.state.firstName, lastName: this.state.lastName, GPA: this.state.GPA, email: this.state.email, campusId: this.state.campusId, image: this.state.image}
+    const student = {id: this.props.id, firstName: this.state.firstName, lastName: this.state.lastName, GPA: this.state.GPA, email: this.state.email, campusId: this.state.campusId, image: this.state.image};
     this.props.saveStudent(student);  
   }
   onChange(ev){
