@@ -90,7 +90,6 @@ const saveCampus = (campus, history)=> {
           })
         }
       )
-      .then(()=> console.log('history in the saveCampus thunk in store is:', history))
       .then(()=> {
         history.push(`/campuses/detail/${campus.id}`);
       })
@@ -160,7 +159,6 @@ const deleteCampus = (campus, history)=> {
         campus
       })
     )
-    .then(()=> console.log('history in deleteCampus is:', history))
     .then( ()=> {
       history.push('/campuses');
     })
@@ -175,7 +173,6 @@ const deleteStudent = (student, history)=> {
         student
       })
     )
-    .then(()=> console.log('history in deleteStudent is:', history))
     .then( ()=> {
       history.push('/students');
     })

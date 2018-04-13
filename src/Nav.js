@@ -11,8 +11,7 @@ const Nav = ({ path })=> {
           ) : (
             <button className='navbutton'><Link to='/'>Home</Link></button>
           )
-        }
-        
+        }        
       </div>
       <div className='col'>
         {

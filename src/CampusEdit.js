@@ -24,9 +24,6 @@ class CampusEdit extends Component {
         }
       },
       image: (value)=> {
-        // if(!value) {
-        //   return 'Image URL is required';
-        // }
         const regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
         if (!regexp.test(value)) {
           return 'Please enter a valid image URL';
@@ -43,11 +40,8 @@ class CampusEdit extends Component {
         }
       },
     }
-    // this.onSelectStudent = this.onSelectStudent.bind(this);
-    // this.onChange = this.onChange.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    // console.log('nextProps is:', nextProps);
     if(nextProps.campus) {
       this.setState({
         name: nextProps.campus.name,
@@ -60,11 +54,11 @@ class CampusEdit extends Component {
   onSave(ev) {
     ev.preventDefault();
     const errors = Object.keys(this.validators).reduce((memo, key)=> {
-      const validator = this.validators[key];//gives a key of a validator function
-      const value = this.state[key]; //gives a value of a key in the state
-      const error = validator(value); //runs the validator function on the value in the state, looking for an error
-      if(error) {             //if an error is found
-        memo[key] = error;    //accumulator will have a key of validator function with a result of the validator function as value
+      const validator = this.validators[key];
+      const value = this.state[key]; 
+      const error = validator(value); 
+      if(error) {             
+        memo[key] = error;    
       }
       return memo;
     }, {});
@@ -81,14 +75,6 @@ class CampusEdit extends Component {
   onDelete() {
     this.props.deleteCampus({ id: this.props.id });
   }
-  // onSelectStudent(ev) {
-  //   ev.preventDefault();
-  //   const student = this.props.students.find( student => student.id === this.state.student.id*1 );
-  //   this.props.saveStudent(student);  
-  // }
-  // onChange(ev){
-  //   this.setState({ student: { id: student.id, firstName: student.firstName, lastName: student.lastName, campusId: this.props.id}});
-  // }
   render() {
     const { campus, students, id } = this.props; 
     const { name, image, description, motto, errors } = this.state;
@@ -136,15 +122,10 @@ class CampusEdit extends Component {
                 </p>
                 <button>Update</button>               
               </form>
-            </div>  
-     
-           
+            </div>           
           </div>   
         
-        
-        {/*<button disabled={ name.length === 0 }>Update</button> */}
-
-        <CampusSelectStudent id={id} parentHistory={this.props.history}/>
+         <CampusSelectStudent id={id} parentHistory={this.props.history}/>
 
         <p><i>Our Students:</i></p>
         <ul>          
@@ -158,8 +139,7 @@ class CampusEdit extends Component {
                 )
               })
             }         
-        </ul>
-         
+        </ul>         
       </div>
     )
   }
@@ -174,7 +154,6 @@ const mapStateToProps = ({ campuses, students }, { id })=> {
 };
 
 const mapDispatchToProps = (dispatch, {history})=> {
-  console.log('history in CampusEdit dispatch:', history);
   return {
     saveCampus: (campus)=> dispatch(saveCampus(campus, history)),
     deleteCampus: (campus)=> dispatch(deleteCampus(campus, history)),

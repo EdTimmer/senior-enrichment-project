@@ -3,11 +3,6 @@ a {
   color: white;
   font-weight: bold;
   text-decoration: underline;
-  /* text-shadow:
-  -1px -1px 0 grey,
-  1px -1px 0 grey,
-  -1px 1px 0 grey,
-  1px 1px 0 grey;   */
 }
 h2 {
   color: white;
@@ -36,18 +31,9 @@ h5 {
 p {
   color: white;
   font-weight: bold;
-  /* text-shadow:
-  -1px -1px 0 gray,
-  1px -1px 0 gray,
-  -1px 1px 0 gray,
-  1px 1px 0 gray; */
 }
 button {
-  /* background-color: purple;
-  color: black;
-  border: 2px solid #4CAF50;  */
   margin: 20px;
-  /* border: 1px solid rgb(177, 11, 121); */
   border-radius: 5px;
   background: rgb(18, 191, 221);
   width: 70px;
@@ -59,11 +45,6 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   color: white;
-  /* text-shadow:
-  -1px -1px 0 grey,
-  1px -1px 0 grey,
-  -1px 1px 0 grey,
-  1px 1px 0 grey;   */
 }
 
 .navbutton {
@@ -75,7 +56,6 @@ button {
 }
 select {
   margin: 20px;
-  /* border: 1px solid rgb(177, 11, 121);   */
   border-radius: 5px;
   background: rgb(18, 191, 221);
   width: 170px;
@@ -87,9 +67,6 @@ select {
   -moz-appearance: none;
   font-weight: bold;
   color: white;
-  /* background: transparent; */
-  /* appearance: none; */
-  /* background: url(http://www.stackoverflow.com/favicon.ico) 96% / 15% no-repeat #eee; */
 }
 input {
   border: 2px solid grey;  
@@ -97,37 +74,21 @@ input {
   padding: 5px 5px 5px 5px;
   margin: 0, 15px, 0, 5px;
 }
-
 img {
-  /* margin: 5px; */
   padding: 5px 5px 5px 5px;
   border-radius: 15px;
 }
-
-/* p.thick {
-  font-weight: bold;
-} */
-
-/* .col-md-6 { width: 45%; float: left; text-align : center; margin: 0 10px; overflow: hidden;} */
-
 table {
   background-color: rgb(14, 124, 158);
   padding: 10px;
   border-radius: 15px;
-  /* border-color: yellow; */
-  /* border: 2px solid yellow; */
 }
-
 th, td {
   padding: 10px;
   text-align: left;
 }
-
 body {
   background-image: url('./img/water.jpeg');
-  /* width: 500px */
-  /* background-image: url('./img/maxresdefault.jpg'); */
-  /* background-image: url('./img/jellyfish_underwater_jelly_109543_1920x1080.jpg'); */
   background-repeat: repeat;
   background-size: 100%;
 } 

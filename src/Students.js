@@ -16,14 +16,11 @@ const Students = ({students, campuses})=> {
             <Link to={'/students/create'}>Add</Link>
           </button>  
         </div>
-      </div>      
-
-
+      </div>
         <ul className='list-group'>
           {
             students.map(student => {
               const campus = campuses.find(campus=> campus.id === student.campusId);
-              // console.log('campus is:', campus)
               const campusName = campus ? <Link to={`/campuses/detail/${campus.id}`}>{campus.name}
           </Link> : 'none'
     
@@ -38,13 +35,9 @@ const Students = ({students, campuses})=> {
                       <p><i>Enrolled in:</i> {campusName}</p>
                     </div>        
                     <div className='col'>
-                    </div>
-
-                                           
-                  </li>  
-                  
-                </div>
-           
+                    </div>                                           
+                  </li>                    
+                </div>           
               )
             })          
           }

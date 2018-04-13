@@ -21,9 +21,6 @@ class CampusCreate extends Component {
         }
       },
       image: (value)=> {
-        // if(!value) {
-        //   return 'Image URL is required';
-        // }
         const regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
         if (!regexp.test(value)) {
           return 'Please enter a valid image URL';
@@ -61,9 +58,6 @@ class CampusCreate extends Component {
     }
     const campus = { name: this.state.name, image: this.state.image, description: this.state.description, motto: this.state.motto };
     this.props.saveCampus(campus);
-      // .catch((err)=> {
-      //   alert('Image URL has to be a valid image URL address');
-      // })
   }
   render() {
     const { name, image, description, motto, errors } = this.state;
@@ -99,8 +93,6 @@ class CampusCreate extends Component {
     )
   }
 }
-
-// <button disabled={name.length === 0}>Add Campus</button>
 
 const mapDispatchToProps = (dispatch, {history})=> {
   return {

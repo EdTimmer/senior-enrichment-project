@@ -9,11 +9,8 @@ const Campus = conn.define('campus', {
   },
   image: {
     type: Sequelize.STRING,
-    unique: true,
+    unique: false,
     allowNull: false,
-    // validate: {
-    //   isURL: true
-    // }
   },
   description: {
     type: Sequelize.TEXT,

@@ -35,17 +35,13 @@ const Campuses = ({campuses, students})=> {
                     <div className='col'>
                     </div> 
                     <div className='col'>
-                    </div>
-                                 
-                  </div>
-                  
-                
+                    </div>                                 
+                  </div>                
                 </div>
               )
             })
           }
         </ul>
-
       </div>
     )  
   }
@@ -57,7 +53,6 @@ const Campuses = ({campuses, students})=> {
       </div>
     )
   }
-
 }
 
 const mapStateToProps = ({ campuses, students })=> {

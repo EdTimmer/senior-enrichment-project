@@ -8,7 +8,6 @@ const { Campus, Student } = db.models;
 
 app.use(require('body-parser').json());
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
-app.use('/vendor', express.static(path.join(__dirname, 'img')));   //check if need this middleware
 app.use('/vendor', express.static(path.join(__dirname, 'public')));
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
@@ -41,7 +40,7 @@ app.post('/api/students', (req, res, next)=> {
 app.delete('/api/campuses/:id', (req, res, next)=> {
   Campus.findById(req.params.id)
     .then( campus => {
-      campus.destroy();  //no need for return here
+      campus.destroy();  
     })
     .then( ()=> res.sendStatus(204))
     .catch(next)
@@ -50,7 +49,7 @@ app.delete('/api/campuses/:id', (req, res, next)=> {
 app.delete('/api/students/:id', (req, res, next)=> {
   Student.findById(req.params.id)
     .then( student => {
-      student.destroy();  //no need for return here
+      student.destroy();  
     })
     .then( ()=> res.sendStatus(204))
     .catch(next)
