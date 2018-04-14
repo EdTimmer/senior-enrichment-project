@@ -14,14 +14,15 @@ const seed = ()=> {
     Student.create({firstName: 'Marina', lastName: 'Cavalryna', GPA: 3.90, email: 'marina@gmail.com', image: 'http://www.pbs.org/wgbh/nova/next/wp-content/uploads/2017/11/hippocampus-short-snouted_2048x1152.jpg'}),
     Campus.create({name: 'Fullstomach Academy', image: 'http://www.abc.net.au/news/image/9209084-3x2-940x627.jpg', description: 'Do you like to eat?  Do you always look for the next meal?  Are you a true risk taker, willing to swallow anything?  Fullstomach Academy is where you belong!', motto: 'Always Be Eating!'}),
     Campus.create({name: 'Periscope Down Academy', image: 'https://thumbs.imagekind.com/5405231_650/A-Pirates-Tale--Attack-Of-The-Mutant-Octopus_art.jpg', description: 'Tired of cruise ships keeping you up all night?  Against submarines sneaking nuclear thingies right through your house?  Join our school and learn how to deal with these problems!', motto: 'Bottoms up!'}),
-    Campus.create({name: 'Pelagic Journey Academy', image: 'https://dtmag.com/wp-content/uploads/2004/05/scuba-school-of-fish-1050x700.jpg', description: 'Do you like to swim?  Do you like feeling lost in a crowd?  Wiggle well with others?  Then join Pelagic Journey Academy!', motto: 'Keep going!'}),
-    Campus.create({name: 'Deep Dive Academy', image: 'http://farm6.staticflickr.com/5461/9544020233_20d443d801_o.jpg', description: 'Do you like the dark?  Cope well under pressure?  Can glow in the dark without swallowing batteries?  Then Deep Dive Academy is for you!', motto: 'How low can you go?'})
+    Campus.create({name: 'Pelagic Journey Academy', image: 'https://i.pinimg.com/originals/eb/f3/e3/ebf3e35278b8d3923498b894a2bf483f.jpg', description: 'Do you like to swim?  Do you like feeling lost in a crowd?  Wiggle well with others?  Then join Pelagic Journey Academy!', motto: 'Keep going!'}),
+    Campus.create({name: 'Deep Dive Academy', image: 'http://farm6.staticflickr.com/5461/9544020233_20d443d801_o.jpg', description: 'Do you like the dark?  Cope well under pressure?  Can glow in the dark without swallowing batteries?  Then Deep Dive Academy is for you!', motto: 'How low can you go?'}),
+    Campus.create({name: 'Step Up Academy', image: 'https://universe-review.ca/I10-72-Eusthenopteron.jpg', description: `Feel like a fish out of water?  Longing for brave new dry world?  Then evolve and come ashore with Step Up Academy!`, motto: 'Water shmoter!'})
   ])
-  .then(([moe, boxana, larry, curly, cindy, anglerina, shep, marina, fullstomach, periscope, pelagic, deep])=> {
+  .then(([moe, boxana, larry, curly, cindy, anglerina, shep, marina, fullstomach, periscope, pelagic, deep, step])=> {
     return Promise.all([
       moe.setCampus(periscope),
       boxana.setCampus(fullstomach),
-      larry.setCampus(pelagic),
+      larry.setCampus(step),
       curly.setCampus(fullstomach),
       cindy.setCampus(periscope),
       anglerina.setCampus(deep),
