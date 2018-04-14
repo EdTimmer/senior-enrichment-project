@@ -30,7 +30,7 @@ const Campus = ({ campus, students, id, studentsOfThisCampus })=> {
         </div>
 
         <p><i>Our Students:</i></p>
-       {studentsOfThisCampus.length === 0 ? (<p>none</p>):(        
+       {studentsOfThisCampus.length === 0 ? (<p>There are no students in this campus yet</p>):(        
          <ul>          
         {
           studentsOfThisCampus.map(student => {
