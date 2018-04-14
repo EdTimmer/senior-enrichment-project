@@ -50,17 +50,10 @@ const Campus = ({ campus, students, id, studentsOfThisCampus })=> {
 const mapStateToProps = ({ campuses, students }, { id })=> {
   const campus = campuses.find( campus => campus.id === id );
   const studentsOfThisCampus = students.filter( student => student.campusId === id);
-  // if (studentsOfThisCampus.length === 0) {
-  //   const noStudents = 'There are no students yet in this campus';
-  // } else {
-  //   const noStudents = "";
-  // }
   return {
     campus,
     students,
-    studentsOfThisCampus,
-    // noStudents
-  }
+    studentsOfThisCampus,  }
 };
 
 export default connect(mapStateToProps)(Campus);
