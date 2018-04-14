@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Campus = ({ campus, students, id, studentsOfThisCampus})=> {
+const Campus = ({ campus, students, id, studentsOfThisCampus })=> {
   if(!campus) {
     return null;
   }
@@ -30,19 +30,19 @@ const Campus = ({ campus, students, id, studentsOfThisCampus})=> {
         </div>
 
         <p><i>Our Students:</i></p>
-        <ul>          
-            {
-              studentsOfThisCampus.map(student => {
-                return (
-                  <div key={student.id}>
-                    <img src={student.image} className='studentImageSmall' />
-                    <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
-                  </div>
-                )
-              })
-            }         
-        </ul>
-       {studentsOfThisCampus.length === 0 ? (<p>There are no students currently enrolled in {campus.name}</p>) : (<p></p>)}
+       {studentsOfThisCampus.length === 0 ? (<p>none</p>):(        
+         <ul>          
+        {
+          studentsOfThisCampus.map(student => {
+            return (
+              <div key={student.id}>
+                <img src={student.image} className='studentImageSmall' />
+                <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
+              </div>
+            )
+          })
+        }         
+        </ul>)}
       </div>
     )
 }
@@ -50,10 +50,16 @@ const Campus = ({ campus, students, id, studentsOfThisCampus})=> {
 const mapStateToProps = ({ campuses, students }, { id })=> {
   const campus = campuses.find( campus => campus.id === id );
   const studentsOfThisCampus = students.filter( student => student.campusId === id);
+  // if (studentsOfThisCampus.length === 0) {
+  //   const noStudents = 'There are no students yet in this campus';
+  // } else {
+  //   const noStudents = "";
+  // }
   return {
     campus,
     students,
-    studentsOfThisCampus
+    studentsOfThisCampus,
+    // noStudents
   }
 };
 
