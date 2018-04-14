@@ -121,3 +121,7 @@ body {
   height: auto;
   max-height: 200px;
 }
+.deleteButton {
+  background-color: palevioletred;
+  margin: 5px 20px 20px 20px;
+}

@@ -114,65 +114,63 @@ class StudentEdit extends Component {
           <div className='col'>
             <h4>Update Information for <b>{student.fullName}</b>:</h4>
           </div>
-          <div className='col text-right'>
-            <button onClick={ onDelete }>Delete</button> 
-          </div>
-        </div>
-      
+        </div>      
         <div className='row'>
           <div className='col'>
             <img src={student.image} width={400}/>
+            <br/>
+            <div>
+            <form onSubmit={ this.onSelectCampus }>
+            <p>Current campus: {campusOfThisStudent.name}</p>
+              <select value={ campusId } name='campusId' onChange={ onChange }>
+              <option value='-1'>Select New Campus</option>     
+              {
+                availableCampuses.map( campus => {
+                  return (
+                    <option key={ campus.id } value={ campus.id }>
+                      { campus.name }
+                    </option>
+                  );
+                })
+              }
+              </select>
+              <button disabled={ campusId*1 === -1}>Enroll</button>
+            </form>    
+           </div>
           </div>
-          <div className='col text-right'>   
+          <div className='col text-left'>   
             <form onSubmit={ onSave }>
-              <p>First Name: <input value={ firstName } name='firstName' onChange={ onChangeEntry }/>
+              <p>First Name: <br/><input value={ firstName } name='firstName' onChange={ onChangeEntry }/>
                 {
                 errors.firstName
                 }
               </p>
-              <p>Last Name: <input value={ lastName } name='lastName' onChange={ onChangeEntry }/>
+              <p>Last Name: <br/><input value={ lastName } name='lastName' onChange={ onChangeEntry }/>
                 {
                 errors.lastName
                 }
               </p>
-              <p>Image URL: <input value={ image } name='image' onChange={ onChangeEntry }/>
+              <p>Image URL: <br/><input value={ image } name='image' onChange={ onChangeEntry }/>
                 {
                   errors.image
                 }
               </p>
-              <p>GPA: <input value={ GPA } name='GPA' onChange={ onChangeEntry }/>
+              <p>GPA: <br/><input value={ GPA } name='GPA' onChange={ onChangeEntry }/>
                 {
                   errors.GPA
                 }
               </p>
-              <p>Email: <input value={ email } name='email' onChange={ onChangeEntry }/>
+              <p>Email: <br/><input value={ email } name='email' onChange={ onChangeEntry }/>
                 {
                   errors.email
                 }
               </p>
-              <button>Update</button>   
-                
-            </form>            
+              <button>Update</button>                   
+            </form>      
+            <button onClick={ onDelete } className='deleteButton'>Delete</button>       
         </div>      
        </div>
-       <div>
-        <form onSubmit={ this.onSelectCampus }>
-        <p>Current campus: {campusOfThisStudent.name}</p>
-          <select value={ campusId } name='campusId' onChange={ onChange }>
-          <option value='-1'>Select New Campus</option>     
-          {
-            availableCampuses.map( campus => {
-              return (
-                <option key={ campus.id } value={ campus.id }>
-                  { campus.name }
-                </option>
-              );
-            })
-          }
-          </select>
-          <button disabled={ campusId*1 === -1}>Enroll</button>
-        </form>    
-       </div>
+
     </div>      
     )
   }

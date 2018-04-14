@@ -86,60 +86,60 @@ class CampusEdit extends Component {
 
     return (
       <div>
-        <div className='row'>
-          <div className='col'>
+        
+          <div>
             <h4>Update information for <b>{ campus.name }</b></h4>
           </div>
-          <div className='col text-right'>      
-            <button onClick={ onDelete }>Delete</button> 
-          </div>  
-        </div> 
+               
+            
+           
+       
           <div className='row'> 
             <div className='col'>
               <img src={campus.image} width={400}/>
+              <CampusSelectStudent id={id} parentHistory={this.props.history}/>
+
+              <p><i>Our Students:</i></p>
+              <ul>          
+                  {
+                    studentsOfThisCampus.map(student => {
+                      return (
+                        <div key={student.id}>
+                          <img src={student.image} className='studentImageSmall' />
+                          <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
+                        </div>
+                      )
+                    })
+                  }         
+              </ul>   
             </div>
-            <div className='col text-right'>       
+            <div className='col text-left'>       
               <form onSubmit={ onSave }>
-                <p>Name: <input value={ name } name='name' onChange={ onChangeInfo }/>
+                <p>Name: <br/><input value={ name } name='name' onChange={ onChangeInfo }/>
                   {
                     errors.name
                   }
                 </p>
-                <p>Image URL: <input value={ image } name='image' onChange={ onChangeInfo }/>
+                <p>Image URL: <br/><input value={ image } name='image' onChange={ onChangeInfo }/>
                   {
                     errors.image
                   }
                 </p>
-                <p>Description: <input value={ description } name='description' onChange={ onChangeInfo }/>
+                <p>Description: <br/><input value={ description } name='description' onChange={ onChangeInfo }/>
                   {
                     errors.description
                   }
                 </p>
-                <p>Motto: <input value={ motto } name='motto' onChange={ onChangeInfo }/>
+                <p>Motto: <br/><input value={ motto } name='motto' onChange={ onChangeInfo }/>
                   {
                     errors.motto
                   }
                 </p>
-                <button>Update</button>               
+                <button>Update</button>                 
               </form>
+              <button onClick={ onDelete } className='deleteButton'>Delete</button>
             </div>           
-          </div>   
-        
-         <CampusSelectStudent id={id} parentHistory={this.props.history}/>
-
-        <p><i>Our Students:</i></p>
-        <ul>          
-            {
-              studentsOfThisCampus.map(student => {
-                return (
-                  <div key={student.id}>
-                    <img src={student.image} className='studentImageSmall' />
-                    <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
-                  </div>
-                )
-              })
-            }         
-        </ul>         
+          </div>     
       </div>
     )
   }
