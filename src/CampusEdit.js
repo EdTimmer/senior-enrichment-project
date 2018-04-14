@@ -100,18 +100,19 @@ class CampusEdit extends Component {
               <CampusSelectStudent id={id} parentHistory={this.props.history}/>
 
               <p><i>Our Students:</i></p>
-              <ul>          
-                  {
-                    studentsOfThisCampus.map(student => {
-                      return (
-                        <div key={student.id}>
-                          <img src={student.image} className='studentImageSmall' />
-                          <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
-                        </div>
-                      )
-                    })
-                  }         
-              </ul>   
+              {studentsOfThisCampus.length === 0 ? (<p>There are no students in this campus yet</p>):(        
+                <ul>          
+               {
+                 studentsOfThisCampus.map(student => {
+                   return (
+                     <div key={student.id}>
+                       <img src={student.image} className='studentImageSmall' />
+                       <Link to={`/students/detail/${student.id}`}>{student.fullName}</Link>
+                     </div>
+                   )
+                 })
+               }         
+               </ul>)}
             </div>
             <div className='col text-left'>       
               <form onSubmit={ onSave }>
