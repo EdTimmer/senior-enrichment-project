@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Student = ({ student, campuses, id, campusOfThisStudent })=>{
+const Student = ({ student, students, campuses, id, campusOfThisStudent })=>{
   if (!student) {
     return null;
   }
@@ -14,6 +14,8 @@ const Student = ({ student, campuses, id, campusOfThisStudent })=>{
         <img src={student.image} width={400}/>
       </div>
       <div className='col'>
+        <Link to={!!students[student.id-2] ? (`/students/detail/${student.id - 1}`):(`/students/detail/${students[students.length -1].id}`)}><button className='nextButton'>Prior</button></Link>
+        <Link to={!!students[student.id] ? (`/students/detail/${student.id + 1}`):(`/students/detail/1`)}><button className='nextButton'>Next</button></Link>   
         <h5><b>GPA:  { student.GPA }</b></h5>
         <h5><b>Email:  { student.email }</b></h5>       
         {!!campusOfThisStudent ? (
@@ -22,6 +24,7 @@ const Student = ({ student, campuses, id, campusOfThisStudent })=>{
 
         
       <Link to={`/students/edit/${student.id}`}><button>Edit</button></Link>
+
         
       </div>
     </div>
@@ -34,6 +37,7 @@ const mapStateToProps = ({ students, campuses }, { id })=> {
   const campusOfThisStudent = campuses.find(campus=> campus.id === student.campusId);
   return {
     student,
+    students,
     campuses,
     campusOfThisStudent
   };

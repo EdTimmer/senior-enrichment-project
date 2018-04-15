@@ -89,9 +89,7 @@ class CampusEdit extends Component {
         
           <div>
             <h4>Update information for <b>{ campus.name }</b></h4>
-          </div>
-               
-            
+          </div>        
            
        
           <div className='row'> 

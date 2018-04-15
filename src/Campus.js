@@ -2,18 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Campus = ({ campus, students, id, studentsOfThisCampus })=> {
+const Campus = ({ campus, campuses, students, id, studentsOfThisCampus })=> {
   if(!campus) {
     return null;
-  }
-    return (
+  }    
+     return (
       <div className='container'>
         <h3>{ campus.name }</h3>
         <div className='row'>
           <div className='col'>
             <img src={campus.image} height={300}/>
           </div>
-          <div className='col'>
+          <div className='col'>  
+            <Link to={!!campuses[campus.id-2] ? (`/campuses/detail/${campus.id - 1}`):(`/campuses/detail/${campuses[campuses.length -1].id}`)}><button className='nextButton'>Prior</button></Link>          
+            <Link to={!!campuses[campus.id] ? (`/campuses/detail/${campus.id + 1}`):(`/campuses/detail/1`)}><button className='nextButton'>Next</button></Link>  
             <table>
             <tr>
             <td><p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p></td>
@@ -25,7 +27,7 @@ const Campus = ({ campus, students, id, studentsOfThisCampus })=> {
             <td><p>Our Motto: <b><i>{campus.motto}</i></b></p></td>
             </tr>          
             </table>            
-            <Link to={`/campuses/edit/${campus.id}`}><button>Edit</button></Link>                  
+            <Link to={`/campuses/edit/${campus.id}`}><button>Edit</button></Link>        
           </div>
         </div>
 
@@ -52,6 +54,7 @@ const mapStateToProps = ({ campuses, students }, { id })=> {
   const studentsOfThisCampus = students.filter( student => student.campusId === id);
   return {
     campus,
+    campuses,
     students,
     studentsOfThisCampus,  }
 };
