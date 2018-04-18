@@ -8,14 +8,14 @@ const Campus = ({ campus, campuses, students, id, studentsOfThisCampus })=> {
   }    
      return (
       <div className='container'>
-        <h3>{ campus.name }</h3>
+        <h1>{ campus.name }</h1>
         <div className='row'>
           <div className='col'>
             <img src={campus.image} height={300}/>
           </div>
           <div className='col'>  
-            <Link to={!!campuses[campus.id-2] ? (`/campuses/detail/${campus.id - 1}`):(`/campuses/detail/${campuses[campuses.length -1].id}`)}><button className='nextButton'>Prior</button></Link>          
-            <Link to={!!campuses[campus.id] ? (`/campuses/detail/${campus.id + 1}`):(`/campuses/detail/1`)}><button className='nextButton'>Next</button></Link>  
+            <Link to={!!campuses[campus.id-2] ? (`/campuses/detail/${campus.id - 1}`):(`/campuses/detail/${campuses[campuses.length -1].id}`)}><button className='nextButton'><p>Prior</p></button></Link>          
+            <Link to={!!campuses[campus.id] ? (`/campuses/detail/${campus.id + 1}`):(`/campuses/detail/1`)}><button className='nextButton'><p>Next</p></button></Link>  
             <table>
             <tr>
             <td><p><i>Number of students in {campus.name}:</i> <strong>{studentsOfThisCampus.length}</strong></p></td>
@@ -27,7 +27,7 @@ const Campus = ({ campus, campuses, students, id, studentsOfThisCampus })=> {
             <td><p>Our Motto: <b><i>{campus.motto}</i></b></p></td>
             </tr>          
             </table>            
-            <Link to={`/campuses/edit/${campus.id}`}><button>Edit</button></Link>        
+            <Link to={`/campuses/edit/${campus.id}`}><button><p>Edit</p></button></Link>        
           </div>
         </div>
 

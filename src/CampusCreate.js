@@ -64,7 +64,7 @@ class CampusCreate extends Component {
     const { onChangeInfo, onSave } = this;
     return (
       <div>
-        <h3>Add A New Campus</h3>
+        <h1>Add A New Campus</h1>
         <form onSubmit={ onSave }>
           <p>Name:<br /> <input value={ name } name='name' onChange={ onChangeInfo }/>
             {
@@ -87,7 +87,7 @@ class CampusCreate extends Component {
             }
           </p>
 
-          <button>Add</button>
+          <button><p>Add</p></button>
         </form>
       </div>
     )

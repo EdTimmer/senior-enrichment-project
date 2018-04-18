@@ -87,7 +87,7 @@ class StudentEdit extends Component {
   }
   onSelectCampus(ev) {
     ev.preventDefault();
-    const campus = this.props.campuses.find( campus => campus.id === this.state.id*1 );
+    const campus = this.props.campuses.find( campus => campus.id === this.state.id*1 );  //CHECK IF DON'T NEED THIS LINE
     const student = {id: this.props.id, firstName: this.state.firstName, lastName: this.state.lastName, GPA: this.state.GPA, email: this.state.email, campusId: this.state.campusId, image: this.state.image};
     this.props.saveStudent(student);  
   }
@@ -112,7 +112,7 @@ class StudentEdit extends Component {
       <div>
         <div className='row'>
           <div className='col'>
-            <h4>Update Information for <b>{student.fullName}</b>:</h4>
+            <h1>Update Information for <b>{student.fullName}</b>:</h1>
           </div>
         </div>      
         <div className='row'>
@@ -134,7 +134,7 @@ class StudentEdit extends Component {
                 })
               }
               </select>
-              <button disabled={ campusId*1 === -1}>Enroll</button>
+              <button disabled={ campusId*1 === -1}><p>Enroll</p></button>
             </form>    
            </div>
           </div>
@@ -165,9 +165,9 @@ class StudentEdit extends Component {
                   errors.email
                 }
               </p>
-              <button>Update</button>                   
+              <button><p>Update</p></button>                   
             </form>      
-            <button onClick={ onDelete } className='deleteButton'>Delete</button>       
+            <button onClick={ onDelete } className='deleteButton'><p>Delete</p></button>       
         </div>      
        </div>
 

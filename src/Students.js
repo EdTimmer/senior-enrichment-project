@@ -6,10 +6,10 @@ const Students = ({students, campuses})=> {
   if (students.length > 0) {
     return (
       <div>
-        <h3>All Students</h3>
+        <h1>All Students</h1>
         <div>
           <div>
-            <p><i>Number of students:</i> <strong>{students.length}</strong><Link to={'/students/create'}><button>Add</button></Link> </p> 
+            <p><i>Number of students:</i> <strong>{students.length}</strong><Link to={'/students/create'}><button><p>Add</p></button></Link> </p> 
           </div>             
         </div>
         <span className='container-1'>

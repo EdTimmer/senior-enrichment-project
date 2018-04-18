@@ -3,11 +3,21 @@ a {
   color: white;
   font-weight: bold;
   text-decoration: underline;
+  font-size: 20px;
+}
+/* h2 {
+  color: white;
+} */
+h1 {
+  color: yellow;
+  font-weight: bold;
+  text-shadow:
+  -1px -1px 0 grey,
+  1px -1px 0 grey,
+  -1px 1px 0 grey,
+  1px 1px 0 grey;
 }
 h2 {
-  color: white;
-}
-h3 {
   color: yellow;
   font-weight: bold;
   text-shadow:
@@ -31,17 +41,18 @@ h5 {
 p {
   color: white;
   font-weight: bold;
+  font-size: 20px;
 }
 button {
   margin: 20px;
   border-radius: 5px;
   background: rgb(18, 191, 221);
-  width: 70px;
+  width: 90px;
   padding: 5px 5px 5px 5px;
   font-size: 16px;
   font-weight: bold;
   border: 2px solid yellow;
-  height: 34px;
+  height: 40px;
   -webkit-appearance: none;
   -moz-appearance: none;
   color: white;
@@ -50,11 +61,11 @@ select {
   margin: 20px, 0, 20px, 20px;
   border-radius: 5px;
   background: rgb(18, 191, 221);
-  width: 170px;
+  width: 205px;
   padding: 5px 1px 5px 5px;
-  font-size: 16px;
+  font-size: 20px;
   border: 2px solid yellow;
-  height: 34px;
+  height: 40px;
   -webkit-appearance: none;
   -moz-appearance: none;
   font-weight: bold;
@@ -85,11 +96,11 @@ body {
   background-size: 100%;
 } 
 .navbutton {
-  width: 180px;
+  width: 200px;
   border: none;
   background: rgb(18, 191, 221);
   padding: 3px 3px 3px 3px;
-  height: 25px;
+  height: 30px;
 }
 .container-1 {
   display: inline-flex;
@@ -109,7 +120,7 @@ body {
 }
 .studentImageSmall {
   width: auto;
-  max-width: 150px;
+  max-width: 190px;
   /* min-width: 150px; */
   height: auto;
   /* max-height: 100px; */

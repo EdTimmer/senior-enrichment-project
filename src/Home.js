@@ -3,9 +3,9 @@ import React from 'react';
 const Home = ()=> {
   return (
     <div className='text-center'>
-      <h3>Margaret Hamilton Interoceanic Academy of JavaSwim</h3>
-      <img src={'/vendor/img/home.jpg'} width={600}/> 
-      <h4><i>for schooling fishes</i></h4>  
+      <h1>Margaret Hamilton Interoceanic Academy of JavaSwim</h1>
+      <img src={'/vendor/img/home.jpg'} width={1000}/> 
+      <h2><i>for schooling fishes</i></h2>  
     </div>
   )
 };

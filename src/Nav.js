@@ -9,7 +9,7 @@ const Nav = ({ path })=> {
           path === '/' ? (
             <button className='navbutton'><p>Home</p></button>            
           ) : (
-            <Link to='/'><button className='navbutton'>Return Home</button></Link>
+            <Link to='/'><button className='navbutton'><p>Return Home</p></button></Link>
           )
         }        
       </div>
@@ -18,7 +18,7 @@ const Nav = ({ path })=> {
           path === '/campuses' ? (
             <button className='navbutton'><p>All Campuses</p></button>            
           ) : (
-            <Link to='/campuses'><button className='navbutton'>View All Campuses</button></Link>
+            <Link to='/campuses'><button className='navbutton'><p>View All Campuses</p></button></Link>
           )
         }
       </div>
@@ -27,7 +27,7 @@ const Nav = ({ path })=> {
           path === '/students' ? (
             <button className='navbutton'><p>All Students</p></button>            
           ) : (
-            <Link to='/students'><button className='navbutton'>View All Students</button></Link>
+            <Link to='/students'><button className='navbutton'><p>View All Students</p></button></Link>
           )
         }
       </div>

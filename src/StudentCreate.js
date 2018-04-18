@@ -70,7 +70,7 @@ class StudentCreate extends Component {
     const { onChangeInfo, onSave } = this;
     return (
       <div>
-        <h3>Add A New Student</h3>
+        <h1>Add A New Student</h1>
         <form onSubmit={ onSave }>
           <p>First Name:<br /> <input value={ firstName } name='firstName' onChange={ onChangeInfo }/>
             {
@@ -97,7 +97,7 @@ class StudentCreate extends Component {
               errors.email
             }
           </p>
-          <button>Add</button>
+          <button><p>Add</p></button>
         </form>
       </div>
     )

@@ -88,7 +88,7 @@ class CampusEdit extends Component {
       <div>
         
           <div>
-            <h4>Update information for <b>{ campus.name }</b></h4>
+            <h1>Update information for <b>{ campus.name }</b></h1>
           </div>        
            
        
@@ -134,9 +134,9 @@ class CampusEdit extends Component {
                     errors.motto
                   }
                 </p>
-                <button>Update</button>                 
+                <button><p>Update</p></button>                 
               </form>
-              <button onClick={ onDelete } className='deleteButton'>Delete</button>
+              <button onClick={ onDelete } className='deleteButton'><p>Delete</p></button>
             </div>           
           </div>     
       </div>
