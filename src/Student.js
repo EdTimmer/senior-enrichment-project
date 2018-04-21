@@ -6,6 +6,11 @@ const Student = ({ student, students, campuses, id, campusOfThisStudent })=>{
   if (!student) {
     return null;
   }
+  const nextStudentIndex = students.indexOf(student) + 1;
+  const nextStudentId = nextStudentIndex < students.length ? students[nextStudentIndex].id : students[0].id;
+  const priorStudentIndex = students.indexOf(student) -1;
+  const lastStudentIndex = students.length - 1;
+  const priorStudentId = priorStudentIndex !== -1 ? students[priorStudentIndex].id : students[lastStudentIndex].id;
   return (
     <div className='container'>
     <h1>{ student.fullName }</h1>
@@ -14,8 +19,8 @@ const Student = ({ student, students, campuses, id, campusOfThisStudent })=>{
         <img src={student.image} width={400}/>
       </div>
       <div className='col'>
-        <Link to={!!students[student.id-2] ? (`/students/detail/${student.id - 1}`):(`/students/detail/${students[students.length -1].id}`)}><button className='nextButton'><p>Prior</p></button></Link>
-        <Link to={!!students[student.id] ? (`/students/detail/${student.id + 1}`):(`/students/detail/1`)}><button className='nextButton'><p>Next</p></button></Link>   
+        <Link to={`/students/detail/${priorStudentId}`}><button className='nextButton'><p>Prior</p></button></Link>
+        <Link to={`/students/detail/${nextStudentId}`}><button className='nextButton'><p>Next</p></button></Link>
         <h5><b>GPA:  { student.GPA }</b></h5>
         <h5><b>Email:  { student.email }</b></h5>       
         {!!campusOfThisStudent ? (

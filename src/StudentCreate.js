@@ -49,7 +49,7 @@ class StudentCreate extends Component {
   }
   onSave(ev) {
     ev.preventDefault();
-    const errors = Object.keys(this.validators).reduce( (memo, key )=> {
+    const errors = Object.keys(this.validators).reduce( (memo, key)=> {
       const validator = this.validators[key];
       const value = this.state[key];
       const error = validator(value);
