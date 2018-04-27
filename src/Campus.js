@@ -2,10 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Campus = ({ campus, campuses, students, id, studentsOfThisCampus })=> {
+const Campus = ({ campus, campuses, students, id })=> {
   if(!campus) {
     return null;
   }    
+
+  const studentsOfThisCampus = students.filter( student => student.campusId === id);
+
   const nextCampusIndex = campuses.indexOf(campus) + 1;
   const nextCampusId = nextCampusIndex < campuses.length ? campuses[nextCampusIndex].id : campuses[0].id;
   const priorCampusIndex = campuses.indexOf(campus) -1;
@@ -57,12 +60,13 @@ const Campus = ({ campus, campuses, students, id, studentsOfThisCampus })=> {
 
 const mapStateToProps = ({ campuses, students }, { id })=> {
   const campus = campuses.find( campus => campus.id === id );
-  const studentsOfThisCampus = students.filter( student => student.campusId === id);
+  // const studentsOfThisCampus = students.filter( student => student.campusId === id);
   return {
     campus,
     campuses,
-    students,
-    studentsOfThisCampus,  }
+    students
+    // studentsOfThisCampus
+  }
 };
 
 export default connect(mapStateToProps)(Campus);
