@@ -18,7 +18,7 @@ const Student = ({ student, students, campuses, id })=>{
     <div className='container'>
     <h1>{ student.fullName }</h1>
     <div className='row'>
-      <div className='col'>
+      <div className="col">
         <img src={student.image} width={400}/>
       </div>
       <div className='col'>
