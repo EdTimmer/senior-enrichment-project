@@ -67,10 +67,10 @@ class StudentEdit extends Component {
       const validator = this.validators[key];
       const value = this.state[key];
       const error = validator(value);
-      if(error) {
+      if (error) {
         memo[key] = error;
       }
-      return memo; 
+      return memo;
     }, {});
     this.setState({ errors });
     if(Object.keys(errors).length) {

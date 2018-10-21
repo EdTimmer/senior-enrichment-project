@@ -16,7 +16,6 @@ class CampusSelectStudent extends Component {
     ev.preventDefault();
     this.props.saveStudent(this.state)
     .then(()=> this.setState({id: -1})) 
-    // .then(()=> history.push('/students')) //added
   }
   onChange(ev){
     this.setState({ id: ev.target.value * 1});
